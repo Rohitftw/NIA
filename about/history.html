@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>History - The Netherlands India Association</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <style>
+      /* --- 1. RESET & VARIABLES (Strict Black & White) --- */
+      :root {
+        --bg-body: #ffffff;
+        --bg-light-grey: #f9f9f9;
+        --bg-dark: #111111;
+
+        --text-main: #222222;
+        --text-light: #666666;
+
+        --border-light: #e0e0e0;
+        --border-dark: #000000;
+
+        --font-heading: "Montserrat", sans-serif;
+        --font-body: "Open Sans", sans-serif;
+
+        --spacing-section: 100px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: var(--font-body);
+        color: var(--text-main);
+        background-color: var(--bg-body);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+        transition: all 0.3s ease;
+      }
+      ul {
+        list-style: none;
+      }
+      img {
+        display: block;
+        max-width: 100%;
+      }
+
+      /* Typography */
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-family: var(--font-heading);
+        color: #000;
+        font-weight: 600;
+        letter-spacing: -0.5px;
+      }
+
+      h2 {
+        font-size: 2.2rem;
+        margin-bottom: 1rem;
+      }
+      h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+      }
+      h4 {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .subtitle {
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        letter-spacing: 2px;
+        color: var(--text-light);
+        margin-bottom: 1rem;
+        display: block;
+        font-weight: 600;
+      }
+
+      p {
+        color: var(--text-light);
+        font-weight: 300;
+        margin-bottom: 1.5rem;
+      }
+
+      /* Container */
+      .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 60px;
+      }
+
+      /* Buttons */
+      .btn {
+        display: inline-block;
+        padding: 12px 24px;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: 1px solid var(--border-dark);
+        white-space: nowrap;
+      }
+      .btn-register {
+        background-color: #000;
+        color: #fff;
+        border-radius: 2px;
+      }
+      .btn-register:hover {
+        background-color: #333;
+      }
+
+      /* --- ANNOUNCEMENT STRIP --- */
+      #announcement-bar {
+        background-color: #f4f4f4;
+        color: #000;
+        text-align: center;
+        padding: 10px 40px;
+        font-size: 0.8rem;
+        font-weight: 500;
+        position: relative;
+        border-bottom: 1px solid #ddd;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .announcement-close {
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        font-size: 1rem;
+        cursor: pointer;
+        color: #555;
+        padding: 5px;
+      }
+
+      /* --- NAVBAR --- */
+      /* --- NAVBAR & DROPDOWNS --- */
+      #navbar {
+        position: sticky;
+        top: 0;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(5px);
+        padding: 15px 5%; /* Slightly reduced padding for better logo fit */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 1000;
+        border-bottom: 1px solid transparent;
+        transition: all 0.3s ease;
+      }
+
+      #navbar.scrolled {
+        border-bottom: 1px solid var(--border-light);
+        padding: 10px 5%; /* Slightly reduced padding on scroll */
+      }
+
+      /* --- NEW LOGO STYLES --- */
+      .nav-logo {
+        /* Removed font-weight, font-size, letter-spacing as they are for text */
+        display: flex;
+        align-items: center;
+      }
+
+      .nav-logo img {
+        /* Adjust this max-height to fit your logo size preferences */
+        max-height: 50px;
+        width: auto;
+        transition: all 0.3s ease;
+      }
+
+      /* Optional: Make logo slightly smaller on scroll */
+      #navbar.scrolled .nav-logo img {
+        max-height: 40px;
+      }
+      .nav-menu {
+        display: flex;
+        gap: 5px;
+        align-items: center;
+        height: 100%;
+      }
+      .nav-item {
+        position: relative;
+        height: 100%;
+        display: flex;
+        align-items: center;
+      }
+      .nav-link {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: #444;
+        padding: 0 15px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        height: 100%;
+        transition: color 0.3s;
+      }
+      .nav-link:hover {
+        color: #000;
+      }
+      .nav-link i {
+        font-size: 0.7rem;
+        color: #999;
+        margin-top: 2px;
+      }
+
+      /* Dropdown */
+      .dropdown {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: #fff;
+        min-width: 220px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        border-top: 2px solid #000;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px);
+        transition: all 0.3s ease;
+        padding: 10px 0;
+        z-index: 1100;
+      }
+      .nav-item:hover .dropdown {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+      .dropdown li a {
+        display: block;
+        padding: 10px 20px;
+        font-size: 0.85rem;
+        color: #555;
+        transition: 0.2s;
+        border-bottom: 1px solid #f9f9f9;
+      }
+      .dropdown li:last-child a {
+        border-bottom: none;
+      }
+      .dropdown li a:hover {
+        background-color: #f5f5f5;
+        color: #000;
+        padding-left: 25px;
+      }
+
+      .nav-actions {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+      .lang-switch {
+        font-size: 0.8rem;
+        font-weight: 600;
+        display: flex;
+        gap: 5px;
+        cursor: pointer;
+        color: #888;
+      }
+      .lang-opt:hover {
+        color: #000;
+      }
+      .lang-opt.active {
+        color: #000;
+        text-decoration: underline;
+        text-underline-offset: 4px;
+      }
+
+      /* --- PAGE HERO --- */
+      .page-header {
+        position: relative;
+        height: 60vh;
+        background-color: #000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: #fff;
+        overflow: hidden;
+      }
+      .page-header-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("https://images.unsplash.com/photo-1596720426673-e4e14290f0cc?auto=format&fit=crop&q=80&w=2000"); /* Historical/Red Fort */
+        background-size: cover;
+        background-position: center;
+        opacity: 0.5;
+        filter: grayscale(100%);
+      }
+      .header-content {
+        position: relative;
+        z-index: 10;
+        padding: 0 20px;
+      }
+      .header-title {
+        font-size: 3.5rem;
+        margin-bottom: 10px;
+      }
+      .header-breadcrumb {
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #ccc;
+      }
+
+      /* --- CONTENT SECTIONS --- */
+      #history-intro {
+        padding: var(--spacing-section) 0;
+      }
+      .text-block p {
+        font-size: 1.05rem;
+        line-height: 1.8;
+        margin-bottom: 20px;
+        color: #444;
+      }
+
+      #jubilee {
+        padding: 80px 0;
+        background-color: var(--bg-light-grey);
+      }
+      .activity-list {
+        margin-top: 30px;
+        border-left: 2px solid #000;
+        padding-left: 40px;
+      }
+      .activity-item {
+        position: relative;
+        margin-bottom: 30px;
+      }
+      .activity-item strong {
+        display: block;
+        color: #000;
+        font-size: 1.1rem;
+        margin-bottom: 5px;
+      }
+      .activity-item p {
+        font-size: 0.95rem;
+        margin-bottom: 0;
+      }
+      .activity-item::before {
+        content: "";
+        position: absolute;
+        left: -46px;
+        top: 5px;
+        width: 10px;
+        height: 10px;
+        background: #fff;
+        border: 2px solid #000;
+        border-radius: 50%;
+      }
+
+      #royal {
+        padding: var(--spacing-section) 0;
+      }
+      .royal-box {
+        border: 1px solid var(--border-light);
+        padding: 60px;
+        text-align: center;
+        background: #fff;
+      }
+      .royal-box h3 {
+        margin-bottom: 20px;
+      }
+      .quote-box {
+        font-family: "Times New Roman", serif;
+        font-style: italic;
+        font-size: 1.2rem;
+        color: #555;
+        margin: 30px 0;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border-left: 3px solid #000;
+      }
+
+      /* --- SPONSORS --- */
+      #sponsors {
+        padding: 60px 0;
+        text-align: center;
+        border-top: 1px solid var(--border-light);
+        background: #fff;
+        overflow: hidden;
+      }
+      .sponsor-carousel-container {
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+        margin-top: 40px;
+        white-space: nowrap;
+      }
+      .sponsor-carousel-container::before,
+      .sponsor-carousel-container::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        width: 100px;
+        height: 100%;
+        z-index: 2;
+        pointer-events: none;
+      }
+      .sponsor-carousel-container::before {
+        left: 0;
+        background: linear-gradient(to right, #fff, transparent);
+      }
+      .sponsor-carousel-container::after {
+        right: 0;
+        background: linear-gradient(to left, #fff, transparent);
+      }
+      .sponsor-track {
+        display: inline-block;
+        animation: scroll 30s linear infinite;
+      }
+      .sponsor-track:hover {
+        animation-play-state: paused;
+      }
+      .sponsor-logo {
+        height: 50px;
+        width: auto;
+        margin: 0 40px;
+        display: inline-block;
+        vertical-align: middle;
+        filter: grayscale(100%);
+        opacity: 0.6;
+        transition: all 0.3s ease;
+      }
+      .sponsor-logo:hover {
+        filter: grayscale(0%);
+        opacity: 1;
+        transform: scale(1.05);
+      }
+      @keyframes scroll {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+
+      /* --- FOOTER --- */
+      footer {
+        background-color: #000;
+        color: #fff;
+        padding: 80px 20px 20px;
+        font-size: 0.9rem;
+      }
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: 40px;
+        max-width: 1100px;
+        margin: 0 auto 60px;
+      }
+      .footer-col h4 {
+        color: #fff;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+      }
+      .footer-col p,
+      .footer-col a {
+        color: #888;
+      }
+      .footer-col a:hover {
+        color: #fff;
+      }
+      .footer-col ul li {
+        margin-bottom: 10px;
+      }
+      .footer-bottom {
+        border-top: 1px solid #222;
+        padding-top: 20px;
+        text-align: center;
+        color: #444;
+        font-size: 0.8rem;
+      }
+      .socials a {
+        margin-right: 15px;
+        font-size: 1.2rem;
+      }
+
+      @media (max-width: 900px) {
+        .nav-menu {
+          display: none;
+        }
+        .container {
+          padding: 0 30px;
+        }
+        .royal-box {
+          padding: 30px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="announcement-bar">
+      <span data-lang-key="announcement_text">Enhancing friendship and understanding between India and The Netherlands.</span>
+      <button class="announcement-close" aria-label="Close announcement">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+
+    <nav id="navbar">
+      <a href="#" class="nav-logo">
+        <img src="assests/logo.webp" alt="NIA Logo" />
+      </a>
+
+      <ul class="nav-menu">
+        <li class="nav-item">
+          <a href="#home" class="nav-link" data-lang-key="nav_home">Home</a>
+        </li>
+        <li class="nav-item">
+          <span class="nav-link" data-lang-key="nav_about">About Us <i class="fas fa-chevron-down"></i></span>
+          <ul class="dropdown">
+            <li><a href="about/about.html" data-lang-key="nav_about_nia">About NIA</a></li>
+            <li><a href="about/executive-board.html" data-lang-key="nav_board">Executive Board</a></li>
+            <li><a href="about/what-we-do.html" data-lang-key="nav_what_we_do">What we do</a></li>
+            <li><a href="about/history.html" data-lang-key="nav_history_drop">History</a></li>
+            <li><a href="about/constitution.html" data-lang-key="nav_constitution">Constitution of NIA</a></li>
+            <li><a href="about/privacy-policy.html" data-lang-key="nav_privacy">Privacy Policy</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <span class="nav-link" data-lang-key="nav_events">Events <i class="fas fa-chevron-down"></i></span>
+          <ul class="dropdown">
+            <li><a href="events/upcoming-events.html" data-lang-key="nav_upcoming">Upcoming Events</a></li>
+            <li><a href="events/past-events.html" data-lang-key="nav_past">Past Events</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a href="membership.html" class="nav-link" data-lang-key="nav_membership">Membership</a>
+        </li>
+        <li class="nav-item">
+          <a href="articles.html" class="nav-link" data-lang-key="nav_articles">Articles</a>
+        </li>
+        <li class="nav-item">
+          <a href="gallery.html" class="nav-link" data-lang-key="nav_gallery">Gallery</a>
+        </li>
+        <li class="nav-item">
+          <a href="contact-us.html" class="nav-link" data-lang-key="nav_contact">Contact Us</a>
+        </li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="membership.html" class="btn btn-register" data-lang-key="btn_register">Register as a Member</a>
+
+        <div class="lang-switch">
+          <span class="lang-opt active" data-lang="en">EN</span>
+          <span style="color: #ddd">|</span>
+          <span class="lang-opt" data-lang="nl">NL</span>
+        </div>
+      </div>
+    </nav>
+
+    <header class="page-header">
+      <div class="page-header-bg"></div>
+      <div class="header-content">
+        <h1 class="header-title" data-lang-key="hist_title">History</h1>
+        <span class="header-breadcrumb">About Us / History</span>
+      </div>
+    </header>
+
+    <section id="history-intro">
+      <div class="container">
+        <div class="text-block">
+          <p data-lang-key="hist_para1">
+            The Netherlands-India Association dates back to April 1951. During the course of its history its character and composition have changed
+            remarkably. The Association was created by a group of Dutch people interested in philosophical and varied cultural aspects of Indian
+            society. In the early years, the aim of the Association was to organize lectures and talks on aspects of Indian religions, culture and
+            philosophy.
+          </p>
+          <p data-lang-key="hist_para2">
+            By 1960 the number of Indians living in the Netherlands had increased significantly and the composition and character of the Association
+            started to reflect the socio-cultural interests also of its Indian members. This was reflected in its Constitution written and adopted in
+            June 1973.
+          </p>
+          <p data-lang-key="hist_para3">By the 1990s, many people of Indian origin from India and Suriname were living in The Netherlands.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="jubilee">
+      <div class="container">
+        <h2 data-lang-key="jubilee_title">Diamond Jubilee Celebrations 1951-2011</h2>
+        <p data-lang-key="jubilee_intro">
+          NIA was proud to celebrate 60 years of the Association in 2011 with its members and many guests. It was a happy occasion to reflect on the
+          birth, growth and survival of one of the oldest cultural associations in the Netherlands, which till today continues to play an important
+          role to strengthen the friendship between two important countries in the world.
+        </p>
+        <p data-lang-key="jubilee_desc">
+          The NIA has brought not only the Indian classical arts to the Dutch stage but also the traditional arts of the Netherlands. It has
+          contributed to the rich traditions of both the countries. Bilateral interest always plays an important role in its evolution. We are proud
+          to be part of this growing organization, which has witnessed the footprints of the prominent members of India and the Netherlands.
+        </p>
+
+        <h4 style="margin-top: 40px" data-lang-key="jubilee_acts_title">These celebrations included 4 important activities:</h4>
+
+        <div class="activity-list">
+          <div class="activity-item">
+            <strong data-lang-key="act_1_title">Publication of a Commemorative Volume</strong>
+            <p data-lang-key="act_1_desc">
+              Depicting the broader history of the NIA and its role in disseminating the knowledge of both the countries in the background of the
+              constantly changing cultural, academic, commercial and industrial scenes. The volume contained 30 articles on a wide spectrum of the
+              relations between The Netherlands and India. The Diamond Jubilee was also a unique moment for us not only to reflect on the past but
+              also to contemplate on our future.
+            </p>
+          </div>
+          <div class="activity-item">
+            <strong data-lang-key="act_2_title">A Cricket Match</strong>
+            <p data-lang-key="act_2_desc">"The Ambassador of India Eleven vs The Mayor of Wassenaar Eleven" was held in June 2011.</p>
+          </div>
+          <div class="activity-item">
+            <strong data-lang-key="act_3_title">A Symposium</strong>
+            <p data-lang-key="act_3_desc">
+              On Indo-Dutch relationship and co-operation in September 2011. Leading academicians and experts took part in the symposium. Subjects
+              touching different aspects of Indo-Dutch relationship were discussed in two sessions.
+            </p>
+          </div>
+          <div class="activity-item">
+            <strong data-lang-key="act_4_title">Grand Concluding Cultural Programme</strong>
+            <p data-lang-key="act_4_desc">
+              Was held in December in the Dr. Anton Philips theater in The Hague as the final event of the Diamond Jubilee Celebration. Excellent
+              artists from India and the Netherlands gave performances. The Jubilee book was presented on this occasion which was attended by many
+              dignitaries, members and guests.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="royal">
+      <div class="container">
+        <div class="royal-box">
+          <h3 data-lang-key="royal_title">Dutch Royal Family</h3>
+          <p data-lang-key="royal_text">NIA is delighted that the Dutch Royal Family holds close ties with the Indian sub-continent.</p>
+
+          <div class="quote-box">
+            <span data-lang-key="royal_note">[Archive] Letter from Her Majesty the Queen of the Netherlands, Queen Beatrix</span>
+          </div>
+
+          <p style="font-weight: 600" data-lang-key="royal_outro">
+            The Netherlands-India Association has come a long way since its creation in 1951 and today it continues to contribute actively to the
+            development of Indo-Dutch cultural relations.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="sponsors">
+      <div class="container">
+        <span class="subtitle" style="text-align: center; display: block" data-lang-key="spon_title">Our Sponsors</span>
+        <div class="sponsor-carousel-container">
+          <div class="sponsor-track">
+            <img src="https://placehold.co/150x60/eeeeee/999999?text=AdevIT" alt="Sponsor" class="sponsor-logo" />
+            <img src="https://placehold.co/150x60/eeeeee/999999?text=HouseOfSpice" alt="Sponsor" class="sponsor-logo" />
+            <img src="https://placehold.co/150x60/eeeeee/999999?text=Nitya" alt="Sponsor" class="sponsor-logo" />
+            <img src="https://placehold.co/150x60/eeeeee/999999?text=Partner1" alt="Sponsor" class="sponsor-logo" />
+            <img src="https://placehold.co/150x60/eeeeee/999999?text=Partner2" alt="Sponsor" class="sponsor-logo" />
+            <img src="https://placehold.co/150x60/eeeeee/999999?text=AdevIT" alt="Sponsor" class="sponsor-logo" />
+            <img src="https://placehold.co/150x60/eeeeee/999999?text=HouseOfSpice" alt="Sponsor" class="sponsor-logo" />
+            <img src="https://placehold.co/150x60/eeeeee/999999?text=Nitya" alt="Sponsor" class="sponsor-logo" />
+            <img src="https://placehold.co/150x60/eeeeee/999999?text=Partner1" alt="Sponsor" class="sponsor-logo" />
+            <img src="https://placehold.co/150x60/eeeeee/999999?text=Partner2" alt="Sponsor" class="sponsor-logo" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>NIA.</h4>
+          <p data-lang-key="foot_about">
+            The Netherlands India Association is a networking organization for Dutch and Indian management, research, and culture.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4 data-lang-key="foot_links">Quick Links</h4>
+          <ul>
+            <li><a href="about/about.html" data-lang-key="nav_about">About Us</a></li>
+            <li><a href="#objectives" data-lang-key="nav_objectives">Objectives</a></li>
+            <li><a href="about/history.html" data-lang-key="nav_history">History</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 data-lang-key="foot_contact">Address</h4>
+          <p>The Hague, 2500 GK<br />The Netherlands</p>
+          <p>info@niaonline.org</p>
+        </div>
+        <div class="footer-col">
+          <h4 data-lang-key="foot_follow">Follow Us</h4>
+          <div class="socials">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2023 Netherlands India Association. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      // --- TRANSLATIONS ---
+      const translations = {
+        en: {
+          announcement_text: "Enhancing friendship and understanding between India and The Netherlands.",
+
+          // Nav
+          nav_home: "Home",
+          nav_about: "About Us",
+          nav_about_nia: "About NIA",
+          nav_board: "Executive Board",
+          nav_what_we_do: "What we do",
+          nav_history_drop: "History",
+          nav_constitution: "Constitution of NIA",
+          nav_privacy: "Privacy Policy",
+          nav_events: "Events",
+          nav_upcoming: "Upcoming Events",
+          nav_past: "Past Events",
+          nav_membership: "Membership",
+          nav_articles: "Articles",
+          nav_gallery: "Gallery",
+          nav_contact: "Contact Us",
+          btn_register: "Register as a Member",
+
+          // History Content
+          hist_title: "History",
+          hist_para1:
+            "The Netherlands-India Association dates back to April 1951. During the course of its history its character and composition have changed remarkably. The Association was created by a group of Dutch people interested in philosophical and varied cultural aspects of Indian society. In the early years, the aim of the Association was to organize lectures and talks on aspects of Indian religions, culture and philosophy.",
+          hist_para2:
+            "By 1960 the number of Indians living in the Netherlands had increased significantly and the composition and character of the Association started to reflect the socio-cultural interests also of its Indian members. This was reflected in its Constitution written and adopted in June 1973.",
+          hist_para3: "By the 1990s, many people of Indian origin from India and Suriname were living in The Netherlands.",
+
+          jubilee_title: "Diamond Jubilee Celebrations 1951-2011",
+          jubilee_intro:
+            "NIA was proud to celebrate 60 years of the Association in 2011 with its members and many guests. It was a happy occasion to reflect on the birth, growth and survival of one of the oldest cultural associations in the Netherlands, which till today continues to play an important role to strengthen the friendship between two important countries in the world.",
+          jubilee_desc:
+            "The NIA has brought not only the Indian classical arts to the Dutch stage but also the traditional arts of the Netherlands. It has contributed to the rich traditions of both the countries. Bilateral interest always plays an important role in its evolution. We are proud to be part of this growing organization, which has witnessed the footprints of the prominent members of India and the Netherlands.",
+          jubilee_acts_title: "These celebrations included 4 important activities:",
+
+          act_1_title: "Publication of a Commemorative Volume",
+          act_1_desc:
+            "Depicting the broader history of the NIA and its role in disseminating the knowledge of both the countries in the background of the constantly changing cultural, academic, commercial and industrial scenes. The volume contained 30 articles on a wide spectrum of the relations between The Netherlands and India. The Diamond Jubilee was also a unique moment for us not only to reflect on the past but also to contemplate on our future.",
+          act_2_title: "A Cricket Match",
+          act_2_desc: '"The Ambassador of India Eleven vs The Mayor of Wassenaar Eleven" was held in June 2011.',
+          act_3_title: "A Symposium",
+          act_3_desc:
+            "On Indo-Dutch relationship and co-operation in September 2011. Leading academicians and experts took part in the symposium. Subjects touching different aspects of Indo-Dutch relationship were discussed in two sessions.",
+          act_4_title: "Grand Concluding Cultural Programme",
+          act_4_desc:
+            "Was held in December in the Dr. Anton Philips theater in The Hague as the final event of the Diamond Jubilee Celebration. Excellent artists from India and the Netherlands gave performances. The Jubilee book was presented on this occasion which was attended by many dignitaries, members and guests.",
+
+          royal_title: "Dutch Royal Family",
+          royal_text: "NIA is delighted that the Dutch Royal Family holds close ties with the Indian sub-continent.",
+          royal_note: "[Archive] Letter from Her Majesty the Queen of the Netherlands, Queen Beatrix",
+          royal_outro:
+            "The Netherlands-India Association has come a long way since its creation in 1951 and today it continues to contribute actively to the development of Indo-Dutch cultural relations.",
+
+          spon_title: "Our Sponsors",
+          foot_about: "The Netherlands India Association is a networking organization for Dutch and Indian management, research, and culture.",
+          foot_links: "Quick Links",
+          foot_contact: "Address",
+          foot_follow: "Follow Us",
+        },
+        nl: {
+          announcement_text: "Het versterken van vriendschap en begrip tussen India en Nederland.",
+
+          // Nav
+          nav_home: "Home",
+          nav_about: "Over Ons",
+          nav_about_nia: "Over NIA",
+          nav_board: "Bestuur",
+          nav_what_we_do: "Wat we doen",
+          nav_history_drop: "Geschiedenis",
+          nav_constitution: "Statuten van NIA",
+          nav_privacy: "Privacybeleid",
+          nav_events: "Evenementen",
+          nav_upcoming: "Aankomende Evenementen",
+          nav_past: "Vorige Evenementen",
+          nav_membership: "Lidmaatschap",
+          nav_articles: "Artikelen",
+          nav_gallery: "Galerij",
+          nav_contact: "Contact",
+          btn_register: "Registreer als Lid",
+
+          hist_title: "Geschiedenis",
+          hist_para1:
+            "De Netherlands-India Association dateert van april 1951. In de loop van haar geschiedenis zijn haar karakter en samenstelling aanzienlijk veranderd. De vereniging werd opgericht door een groep Nederlanders die geïnteresseerd waren in filosofische en diverse culturele aspecten van de Indiase samenleving.",
+          hist_para2:
+            "Tegen 1960 was het aantal Indiërs in Nederland aanzienlijk toegenomen en de samenstelling van de vereniging begon ook de sociaal-culturele belangen van haar Indiase leden te weerspiegelen.",
+          hist_para3: "Tegen de jaren 1990 woonden veel mensen van Indiase afkomst uit India en Suriname in Nederland.",
+
+          jubilee_title: "Diamanten Jubileum Vieringen 1951-2011",
+          jubilee_intro:
+            "NIA was er trots op om in 2011 60 jaar van de vereniging te vieren met haar leden en vele gasten. Het was een gelegenheid om na te denken over de geboorte, groei en het voortbestaan van een van de oudste culturele verenigingen in Nederland.",
+          jubilee_desc:
+            "De NIA heeft niet alleen de Indiase klassieke kunsten naar het Nederlandse podium gebracht, maar ook de traditionele kunsten van Nederland. Het heeft bijgedragen aan de rijke tradities van beide landen.",
+          jubilee_acts_title: "Deze vieringen omvatten 4 belangrijke activiteiten:",
+
+          act_1_title: "Publicatie van een Gedenkboek",
+          act_1_desc:
+            "Beschrijft de bredere geschiedenis van de NIA en haar rol in het verspreiden van kennis over beide landen. Het boek bevatte 30 artikelen over een breed spectrum van de betrekkingen tussen Nederland en India.",
+          act_2_title: "Een Cricketwedstrijd",
+          act_2_desc: '"The Ambassador of India Eleven vs The Mayor of Wassenaar Eleven" werd gehouden in juni 2011.',
+          act_3_title: "Een Symposium",
+          act_3_desc:
+            "Over Indo-Nederlandse relaties en samenwerking in september 2011. Vooraanstaande academici en experts namen deel aan het symposium.",
+          act_4_title: "Groot Afsluitend Cultureel Programma",
+          act_4_desc:
+            "Werd in december gehouden in het Dr. Anton Philips theater in Den Haag. Uitstekende artiesten uit India en Nederland gaven optredens.",
+
+          royal_title: "Nederlandse Koninklijke Familie",
+          royal_text: "NIA is verheugd dat de Nederlandse Koninklijke Familie nauwe banden onderhoudt met het Indiase subcontinent.",
+          royal_note: "[Archief] Brief van Hare Majesteit de Koningin der Nederlanden, Koningin Beatrix",
+          royal_outro:
+            "De Netherlands-India Association heeft een lange weg afgelegd sinds haar oprichting in 1951 en blijft actief bijdragen aan de ontwikkeling van Indo-Nederlandse culturele betrekkingen.",
+
+          spon_title: "Onze Sponsors",
+          foot_about: "De Netherlands India Association is een netwerkorganisatie voor Nederlands en Indiaas management, onderzoek en cultuur.",
+          foot_links: "Snelle Links",
+          foot_contact: "Adres",
+          foot_follow: "Volg Ons",
+        },
+      };
+
+      // --- LANGUAGE SWITCHER LOGIC ---
+      const langOpts = document.querySelectorAll(".lang-opt");
+
+      function setLanguage(lang) {
+        localStorage.setItem("niaLanguage", lang);
+        document.querySelectorAll("[data-lang-key]").forEach((el) => {
+          const key = el.getAttribute("data-lang-key");
+          if (translations[lang][key]) el.innerText = translations[lang][key];
+        });
+        langOpts.forEach((opt) => {
+          if (opt.dataset.lang === lang) opt.classList.add("active");
+          else opt.classList.remove("active");
+        });
+      }
+
+      langOpts.forEach((opt) => opt.addEventListener("click", () => setLanguage(opt.dataset.lang)));
+      setLanguage(localStorage.getItem("niaLanguage") || "en");
+
+      // --- ANNOUNCEMENT ---
+      if (localStorage.getItem("niaAnnouncementClosed") === "true") {
+        document.getElementById("announcement-bar").style.display = "none";
+      }
+      document.querySelector(".announcement-close").addEventListener("click", () => {
+        document.getElementById("announcement-bar").style.display = "none";
+        localStorage.setItem("niaAnnouncementClosed", "true");
+      });
+
+      // --- NAVBAR SCROLL ---
+      window.addEventListener("scroll", () => {
+        const navbar = document.getElementById("navbar");
+        if (window.scrollY > 50) navbar.classList.add("scrolled");
+        else navbar.classList.remove("scrolled");
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Constitution - The Netherlands India Association</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <style>
+      /* --- 1. RESET & VARIABLES (Strict Black & White) --- */
+      :root {
+        --bg-body: #ffffff;
+        --bg-light-grey: #f9f9f9;
+        --bg-dark: #111111;
+
+        --text-main: #222222;
+        --text-light: #666666;
+
+        --border-light: #e0e0e0;
+        --border-dark: #000000;
+
+        --font-heading: "Montserrat", sans-serif;
+        --font-body: "Open Sans", sans-serif;
+
+        --spacing-section: 100px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: var(--font-body);
+        color: var(--text-main);
+        background-color: var(--bg-body);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+        transition: all 0.3s ease;
+      }
+      ul {
+        list-style: none;
+      }
+      img {
+        display: block;
+        max-width: 100%;
+      }
+
+      /* Typography */
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-family: var(--font-heading);
+        color: #000;
+        font-weight: 600;
+        letter-spacing: -0.5px;
+      }
+
+      h2 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+      }
+      h3 {
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+        margin-top: 2rem;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 10px;
+      }
+      h4 {
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .subtitle {
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        letter-spacing: 2px;
+        color: var(--text-light);
+        margin-bottom: 1rem;
+        display: block;
+        font-weight: 600;
+      }
+
+      p {
+        color: var(--text-light);
+        font-weight: 300;
+        margin-bottom: 1.5rem;
+        font-size: 0.95rem;
+      }
+
+      ol {
+        margin-bottom: 1.5rem;
+        padding-left: 20px;
+      }
+      ol li {
+        margin-bottom: 10px;
+        color: var(--text-light);
+        font-size: 0.95rem;
+      }
+
+      /* Container */
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 60px;
+      }
+
+      /* Buttons */
+      .btn {
+        display: inline-block;
+        padding: 12px 24px;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: 1px solid var(--border-dark);
+        white-space: nowrap;
+      }
+      .btn-register {
+        background-color: #000;
+        color: #fff;
+        border-radius: 2px;
+      }
+      .btn-register:hover {
+        background-color: #333;
+      }
+
+      /* --- ANNOUNCEMENT STRIP --- */
+      #announcement-bar {
+        background-color: #f4f4f4;
+        color: #000;
+        text-align: center;
+        padding: 10px 40px;
+        font-size: 0.8rem;
+        font-weight: 500;
+        position: relative;
+        border-bottom: 1px solid #ddd;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .announcement-close {
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        font-size: 1rem;
+        cursor: pointer;
+        color: #555;
+        padding: 5px;
+      }
+
+      /* --- NAVBAR --- */
+      /* --- NAVBAR & DROPDOWNS --- */
+      #navbar {
+        position: sticky;
+        top: 0;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(5px);
+        padding: 15px 5%; /* Slightly reduced padding for better logo fit */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 1000;
+        border-bottom: 1px solid transparent;
+        transition: all 0.3s ease;
+      }
+
+      #navbar.scrolled {
+        border-bottom: 1px solid var(--border-light);
+        padding: 10px 5%; /* Slightly reduced padding on scroll */
+      }
+
+      /* --- NEW LOGO STYLES --- */
+      .nav-logo {
+        /* Removed font-weight, font-size, letter-spacing as they are for text */
+        display: flex;
+        align-items: center;
+      }
+
+      .nav-logo img {
+        /* Adjust this max-height to fit your logo size preferences */
+        max-height: 50px;
+        width: auto;
+        transition: all 0.3s ease;
+      }
+
+      /* Optional: Make logo slightly smaller on scroll */
+      #navbar.scrolled .nav-logo img {
+        max-height: 40px;
+      }
+      .nav-menu {
+        display: flex;
+        gap: 5px;
+        align-items: center;
+        height: 100%;
+      }
+      .nav-item {
+        position: relative;
+        height: 100%;
+        display: flex;
+        align-items: center;
+      }
+      .nav-link {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: #444;
+        padding: 0 15px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        height: 100%;
+        transition: color 0.3s;
+      }
+      .nav-link:hover {
+        color: #000;
+      }
+      .nav-link i {
+        font-size: 0.7rem;
+        color: #999;
+        margin-top: 2px;
+      }
+
+      /* Dropdown */
+      .dropdown {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: #fff;
+        min-width: 220px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        border-top: 2px solid #000;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px);
+        transition: all 0.3s ease;
+        padding: 10px 0;
+        z-index: 1100;
+      }
+      .nav-item:hover .dropdown {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+      .dropdown li a {
+        display: block;
+        padding: 10px 20px;
+        font-size: 0.85rem;
+        color: #555;
+        transition: 0.2s;
+        border-bottom: 1px solid #f9f9f9;
+      }
+      .dropdown li:last-child a {
+        border-bottom: none;
+      }
+      .dropdown li a:hover {
+        background-color: #f5f5f5;
+        color: #000;
+        padding-left: 25px;
+      }
+
+      .nav-actions {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+      .lang-switch {
+        font-size: 0.8rem;
+        font-weight: 600;
+        display: flex;
+        gap: 5px;
+        cursor: pointer;
+        color: #888;
+      }
+      .lang-opt:hover {
+        color: #000;
+      }
+      .lang-opt.active {
+        color: #000;
+        text-decoration: underline;
+        text-underline-offset: 4px;
+      }
+
+      /* --- PAGE HERO --- */
+      .page-header {
+        position: relative;
+        height: 50vh;
+        background-color: #000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: #fff;
+        overflow: hidden;
+      }
+      .page-header-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("https://images.unsplash.com/photo-1532375810709-75b1da00537c?auto=format&fit=crop&q=80&w=2000"); /* Formal/Document image */
+        background-size: cover;
+        background-position: center;
+        opacity: 0.5;
+        filter: grayscale(100%);
+      }
+      .header-content {
+        position: relative;
+        z-index: 10;
+        padding: 0 20px;
+      }
+      .header-title {
+        font-size: 3.5rem;
+        margin-bottom: 10px;
+      }
+      .header-breadcrumb {
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #ccc;
+      }
+
+      /* --- CONSTITUTION LAYOUT --- */
+      #constitution-content {
+        padding: 80px 0;
+      }
+      .constitution-grid {
+        display: grid;
+        grid-template-columns: 250px 1fr;
+        gap: 60px;
+      }
+
+      /* Sidebar Navigation */
+      .toc-sidebar {
+        position: sticky;
+        top: 120px;
+        height: fit-content;
+        border-right: 1px solid #eee;
+        padding-right: 20px;
+      }
+      .toc-link {
+        display: block;
+        padding: 10px 0;
+        color: #666;
+        font-size: 0.9rem;
+        border-bottom: 1px solid #f9f9f9;
+        transition: 0.2s;
+      }
+      .toc-link:hover {
+        color: #000;
+        padding-left: 10px;
+      }
+      .toc-header {
+        font-weight: 700;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+        display: block;
+        font-size: 0.9rem;
+      }
+
+      /* Main Text Area */
+      .legal-text {
+        max-width: 800px;
+      }
+      .article-block {
+        margin-bottom: 60px;
+        scroll-margin-top: 140px;
+      } /* scroll-margin for sticky nav */
+
+      /* --- SPONSORS --- */
+      #sponsors {
+        padding: 60px 0;
+        text-align: center;
+        border-top: 1px solid var(--border-light);
+        background: #fff;
+        overflow: hidden;
+      }
+      .sponsor-carousel-container {
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+        margin-top: 40px;
+        white-space: nowrap;
+      }
+      .sponsor-carousel-container::before,
+      .sponsor-carousel-container::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        width: 100px;
+        height: 100%;
+        z-index: 2;
+        pointer-events: none;
+      }
+      .sponsor-carousel-container::before {
+        left: 0;
+        background: linear-gradient(to right, #fff, transparent);
+      }
+      .sponsor-carousel-container::after {
+        right: 0;
+        background: linear-gradient(to left, #fff, transparent);
+      }
+      .sponsor-track {
+        display: inline-block;
+        animation: scroll 30s linear infinite;
+      }
+      .sponsor-track:hover {
+        animation-play-state: paused;
+      }
+      .sponsor-logo {
+        height: 50px;
+        width: auto;
+        margin: 0 40px;
+        display: inline-block;
+        vertical-align: middle;
+        filter: grayscale(100%);
+        opacity: 0.6;
+        transition: all 0.3s ease;
+      }
+      .sponsor-logo:hover {
+        filter: grayscale(0%);
+        opacity: 1;
+        transform: scale(1.05);
+      }
+      @keyframes scroll {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+
+      /* --- FOOTER --- */
+      footer {
+        background-color: #000;
+        color: #fff;
+        padding: 80px 20px 20px;
+        font-size: 0.9rem;
+      }
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: 40px;
+        max-width: 1100px;
+        margin: 0 auto 60px;
+      }
+      .footer-col h4 {
+        color: #fff;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+      }
+      .footer-col p,
+      .footer-col a {
+        color: #888;
+      }
+      .footer-col a:hover {
+        color: #fff;
+      }
+      .footer-col ul li {
+        margin-bottom: 10px;
+      }
+      .footer-bottom {
+        border-top: 1px solid #222;
+        padding-top: 20px;
+        text-align: center;
+        color: #444;
+        font-size: 0.8rem;
+      }
+      .socials a {
+        margin-right: 15px;
+        font-size: 1.2rem;
+      }
+
+      @media (max-width: 900px) {
+        .nav-menu {
+          display: none;
+        }
+        .constitution-grid {
+          grid-template-columns: 1fr;
+        }
+        .toc-sidebar {
+          display: none;
+        } /* Hide sidebar on mobile */
+        .container {
+          padding: 0 30px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="announcement-bar">
+      <span data-lang-key="announcement_text">Enhancing friendship and understanding between India and The Netherlands.</span>
+      <button class="announcement-close" aria-label="Close announcement">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+
+    <nav id="navbar">
+      <a href="#" class="nav-logo">
+        <img src="assests/logo.webp" alt="NIA Logo" />
+      </a>
+
+      <ul class="nav-menu">
+        <li class="nav-item">
+          <a href="#home" class="nav-link" data-lang-key="nav_home">Home</a>
+        </li>
+        <li class="nav-item">
+          <span class="nav-link" data-lang-key="nav_about">About Us <i class="fas fa-chevron-down"></i></span>
+          <ul class="dropdown">
+            <li><a href="about/about.html" data-lang-key="nav_about_nia">About NIA</a></li>
+            <li><a href="about/executive-board.html" data-lang-key="nav_board">Executive Board</a></li>
+            <li><a href="about/what-we-do.html" data-lang-key="nav_what_we_do">What we do</a></li>
+            <li><a href="about/history.html" data-lang-key="nav_history_drop">History</a></li>
+            <li><a href="about/constitution.html" data-lang-key="nav_constitution">Constitution of NIA</a></li>
+            <li><a href="about/privacy-policy.html" data-lang-key="nav_privacy">Privacy Policy</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <span class="nav-link" data-lang-key="nav_events">Events <i class="fas fa-chevron-down"></i></span>
+          <ul class="dropdown">
+            <li><a href="events/upcoming-events.html" data-lang-key="nav_upcoming">Upcoming Events</a></li>
+            <li><a href="events/past-events.html" data-lang-key="nav_past">Past Events</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a href="membership.html" class="nav-link" data-lang-key="nav_membership">Membership</a>
+        </li>
+        <li class="nav-item">
+          <a href="articles.html" class="nav-link" data-lang-key="nav_articles">Articles</a>
+        </li>
+        <li class="nav-item">
+          <a href="gallery.html" class="nav-link" data-lang-key="nav_gallery">Gallery</a>
+        </li>
+        <li class="nav-item">
+          <a href="contact-us.html" class="nav-link" data-lang-key="nav_contact">Contact Us</a>
+        </li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="membership.html" class="btn btn-register" data-lang-key="btn_register">Register as a Member</a>
+
+        <div class="lang-switch">
+          <span class="lang-opt active" data-lang="en">EN</span>
+          <span style="color: #ddd">|</span>
+          <span class="lang-opt" data-lang="nl">NL</span>
+        </div>
+      </div>
+    </nav>
+
+    <header class="page-header">
+      <div class="page-header-bg"></div>
+      <div class="header-content">
+        <h1 class="header-title" data-lang-key="const_title">Constitution of NIA</h1>
+        <span class="header-breadcrumb">About Us / Constitution</span>
+      </div>
+    </header>
+
+    <section id="constitution-content">
+      <div class="container">
+        <div class="constitution-grid">
+          <aside class="toc-sidebar">
+            <span class="toc-header">Contents</span>
+            <a href="#art1" class="toc-link">Name, Seat, Objectives</a>
+            <a href="#art2" class="toc-link">Membership</a>
+            <a href="#art3" class="toc-link">Executive Board</a>
+            <a href="#art4" class="toc-link">General Body Meeting</a>
+            <a href="#art5" class="toc-link">Resolutions & Liquidation</a>
+          </aside>
+
+          <div class="legal-text">
+            <p style="font-style: italic; color: #999">Translation of the original Dutch text. (13-6-1973)</p>
+
+            <div class="article-block" id="art1">
+              <h3 data-lang-key="art_name_title">Name, Seat, Objectives</h3>
+              <h4 data-lang-key="art_1">Article 1</h4>
+              <p data-lang-key="art_1_text">
+                The Association bears the name: "NETHERLANDS-INDIA ASSOCIATION" and is established in The Hague. The Association is founded for an
+                indefinite period.
+              </p>
+
+              <h4 data-lang-key="art_2">Article 2</h4>
+              <p data-lang-key="art_2_text">
+                The aim of the association is to promote the friendship, knowledge and understanding of culture, history, philosophy, religion and
+                social structure of India and the Netherlands between the people of both countries.
+              </p>
+            </div>
+
+            <div class="article-block" id="art2">
+              <h3 data-lang-key="art_mem_title">Membership</h3>
+              <h4 data-lang-key="art_3">Article 3</h4>
+              <ol>
+                <li data-lang-key="art_3_1">The members of the Association consist of ordinary members, honorary members and donor members.</li>
+                <li data-lang-key="art_3_2">
+                  Ordinary members are those who have reached the age of eighteen years and have been admitted as members by the Executive Board.
+                </li>
+                <li data-lang-key="art_3_3">
+                  Honorary members are those who, on account of their extraordinary merits to the Association or in the field of Indo-Dutch relations,
+                  have been appointed as such by the General Body Meeting on the proposal of the Executive Board.
+                </li>
+              </ol>
+
+              <h4 data-lang-key="art_4">Article 4</h4>
+              <p data-lang-key="art_4_text">
+                Membership ends by death of the member, by resignation by the member, or by resignation on behalf of the Association.
+              </p>
+            </div>
+
+            <div class="article-block" id="art3">
+              <h3 data-lang-key="art_board_title">Executive Board & Advisory Council</h3>
+              <h4 data-lang-key="art_5">Article 5</h4>
+              <ol>
+                <li data-lang-key="art_5_1">
+                  The Executive Board consists of at least five members, including a President, a Secretary and a Treasurer.
+                </li>
+                <li data-lang-key="art_5_2">
+                  The members of the Executive Board are appointed by the General Body Meeting from the members of the Association.
+                </li>
+                <li data-lang-key="art_5_3">The President is appointed in function by the General Body Meeting.</li>
+              </ol>
+            </div>
+
+            <div class="article-block" id="art4">
+              <h3 data-lang-key="art_gm_title">The General Body Meeting</h3>
+              <h4 data-lang-key="art_9">Article 9</h4>
+              <p data-lang-key="art_9_text">
+                Access to the General Body Meeting is open to all members of the Association who have not been suspended.
+              </p>
+
+              <h4 data-lang-key="art_10">Article 10</h4>
+              <p data-lang-key="art_10_text">
+                The General Body Meetings are convened by the Executive Board. The convening notices are sent in writing to the addresses of the
+                members according to the register referred to in Article 4.
+              </p>
+            </div>
+
+            <div class="article-block" id="art5">
+              <h3 data-lang-key="art_liq_title">Resolutions and Liquidation</h3>
+              <h4 data-lang-key="art_16">Article 16</h4>
+              <p data-lang-key="art_16_text">
+                To amend the Constitution of the Association, a resolution of the General Body Meeting is required, which has been convened with the
+                announcement that an amendment of the Constitution will be proposed there.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sponsors">
+      <div class="container">
+        <span class="subtitle" style="text-align: center; display: block" data-lang-key="spon_title">Our Sponsors</span>
+        <div class="sponsor-carousel-container">
+          <div class="sponsor-track">
+            <img src="https://placehold.co/150x60/eeeeee/999999?text=AdevIT" alt="Sponsor" class="sponsor-logo" />
+            <img src="https://placehold.co/150x60/eeeeee/999999?text=HouseOfSpice" alt="Sponsor" class="sponsor-logo" />
+            <img src="https://placehold.co/150x60/eeeeee/999999?text=Nitya" alt="Sponsor" class="sponsor-logo" />
+            <img src="https://placehold.co/150x60/eeeeee/999999?text=Partner1" alt="Sponsor" class="sponsor-logo" />
+            <img src="https://placehold.co/150x60/eeeeee/999999?text=Partner2" alt="Sponsor" class="sponsor-logo" />
+            <img src="https://placehold.co/150x60/eeeeee/999999?text=AdevIT" alt="Sponsor" class="sponsor-logo" />
+            <img src="https://placehold.co/150x60/eeeeee/999999?text=HouseOfSpice" alt="Sponsor" class="sponsor-logo" />
+            <img src="https://placehold.co/150x60/eeeeee/999999?text=Nitya" alt="Sponsor" class="sponsor-logo" />
+            <img src="https://placehold.co/150x60/eeeeee/999999?text=Partner1" alt="Sponsor" class="sponsor-logo" />
+            <img src="https://placehold.co/150x60/eeeeee/999999?text=Partner2" alt="Sponsor" class="sponsor-logo" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>NIA.</h4>
+          <p data-lang-key="foot_about">
+            The Netherlands India Association is a networking organization for Dutch and Indian management, research, and culture.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4 data-lang-key="foot_links">Quick Links</h4>
+          <ul>
+            <li><a href="about/about.html" data-lang-key="nav_about">About Us</a></li>
+            <li><a href="#objectives" data-lang-key="nav_objectives">Objectives</a></li>
+            <li><a href="about/history.html" data-lang-key="nav_history">History</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 data-lang-key="foot_contact">Address</h4>
+          <p>The Hague, 2500 GK<br />The Netherlands</p>
+          <p>info@niaonline.org</p>
+        </div>
+        <div class="footer-col">
+          <h4 data-lang-key="foot_follow">Follow Us</h4>
+          <div class="socials">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2023 Netherlands India Association. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      // --- TRANSLATIONS ---
+      const translations = {
+        en: {
+          announcement_text: "Enhancing friendship and understanding between India and The Netherlands.",
+
+          // Nav
+          nav_home: "Home",
+          nav_about: "About Us",
+          nav_about_nia: "About NIA",
+          nav_board: "Executive Board",
+          nav_what_we_do: "What we do",
+          nav_history_drop: "History",
+          nav_constitution: "Constitution of NIA",
+          nav_privacy: "Privacy Policy",
+          nav_events: "Events",
+          nav_upcoming: "Upcoming Events",
+          nav_past: "Past Events",
+          nav_membership: "Membership",
+          nav_articles: "Articles",
+          nav_gallery: "Gallery",
+          nav_contact: "Contact Us",
+          btn_register: "Register as a Member",
+
+          // Header
+          const_title: "Constitution of NIA",
+
+          // Articles
+          art_name_title: "Name, Seat, Objectives",
+          art_1: "Article 1",
+          art_1_text:
+            'The Association bears the name: "NETHERLANDS-INDIA ASSOCIATION" and is established in The Hague. The Association is founded for an indefinite period.',
+          art_2: "Article 2",
+          art_2_text:
+            "The aim of the association is to promote the friendship, knowledge and understanding of culture, history, philosophy, religion and social structure of India and the Netherlands between the people of both countries.",
+
+          art_mem_title: "Membership",
+          art_3: "Article 3",
+          art_3_1: "The members of the Association consist of ordinary members, honorary members and donor members.",
+          art_3_2: "Ordinary members are those who have reached the age of eighteen years and have been admitted as members by the Executive Board.",
+          art_3_3:
+            "Honorary members are those who, on account of their extraordinary merits to the Association or in the field of Indo-Dutch relations, have been appointed as such by the General Body Meeting on the proposal of the Executive Board.",
+          art_4: "Article 4",
+          art_4_text: "Membership ends by death of the member, by resignation by the member, or by resignation on behalf of the Association.",
+
+          art_board_title: "Executive Board & Advisory Council",
+          art_5: "Article 5",
+          art_5_1: "The Executive Board consists of at least five members, including a President, a Secretary and a Treasurer.",
+          art_5_2: "The members of the Executive Board are appointed by the General Body Meeting from the members of the Association.",
+          art_5_3: "The President is appointed in function by the General Body Meeting.",
+
+          art_gm_title: "The General Body Meeting",
+          art_9: "Article 9",
+          art_9_text: "Access to the General Body Meeting is open to all members of the Association who have not been suspended.",
+          art_10: "Article 10",
+          art_10_text:
+            "The General Body Meetings are convened by the Executive Board. The convening notices are sent in writing to the addresses of the members according to the register referred to in Article 4.",
+
+          art_liq_title: "Resolutions and Liquidation",
+          art_16: "Article 16",
+          art_16_text:
+            "To amend the Constitution of the Association, a resolution of the General Body Meeting is required, which has been convened with the announcement that an amendment of the Constitution will be proposed there.",
+
+          spon_title: "Our Sponsors",
+          foot_about: "The Netherlands India Association is a networking organization for Dutch and Indian management, research, and culture.",
+          foot_links: "Quick Links",
+          foot_contact: "Address",
+          foot_follow: "Follow Us",
+        },
+        nl: {
+          announcement_text: "Het versterken van vriendschap en begrip tussen India en Nederland.",
+
+          nav_home: "Home",
+          nav_about: "Over Ons",
+          nav_about_nia: "Over NIA",
+          nav_board: "Bestuur",
+          nav_what_we_do: "Wat we doen",
+          nav_history_drop: "Geschiedenis",
+          nav_constitution: "Statuten van NIA",
+          nav_privacy: "Privacybeleid",
+          nav_events: "Evenementen",
+          nav_upcoming: "Aankomende Evenementen",
+          nav_past: "Vorige Evenementen",
+          nav_membership: "Lidmaatschap",
+          nav_articles: "Artikelen",
+          nav_gallery: "Galerij",
+          nav_contact: "Contact",
+          btn_register: "Registreer als Lid",
+
+          const_title: "Statuten van NIA",
+
+          art_name_title: "Naam, Zetel, Doelstellingen",
+          art_1: "Artikel 1",
+          art_1_text:
+            'De Vereniging draagt de naam: "NETHERLANDS-INDIA ASSOCIATION" en is gevestigd te \'s-Gravenhage. De Vereniging is opgericht voor onbepaalde tijd.',
+          art_2: "Artikel 2",
+          art_2_text:
+            "Het doel van de vereniging is het bevorderen van de vriendschap, kennis en begrip van cultuur, geschiedenis, filosofie, religie en sociale structuur van India en Nederland tussen de mensen van beide landen.",
+
+          art_mem_title: "Lidmaatschap",
+          art_3: "Artikel 3",
+          art_3_1: "De leden van de Vereniging bestaan uit gewone leden, ereleden en donateurs.",
+          art_3_2: "Gewone leden zijn zij die de leeftijd van achttien jaar hebben bereikt en door het Bestuur als lid zijn toegelaten.",
+          art_3_3:
+            "Ereleden zijn zij die wegens hun buitengewone verdiensten voor de Vereniging of op het gebied van de Indo-Nederlandse betrekkingen, op voorstel van het Bestuur door de Algemene Vergadering als zodanig zijn benoemd.",
+          art_4: "Artikel 4",
+          art_4_text: "Het lidmaatschap eindigt door overlijden van het lid, door opzegging door het lid, of door opzegging namens de Vereniging.",
+
+          art_board_title: "Bestuur & Adviesraad",
+          art_5: "Artikel 5",
+          art_5_1: "Het Bestuur bestaat uit ten minste vijf leden, waaronder een Voorzitter, een Secretaris en een Penningmeester.",
+          art_5_2: "De leden van het Bestuur worden door de Algemene Vergadering benoemd uit de leden van de Vereniging.",
+          art_5_3: "De Voorzitter wordt in functie benoemd door de Algemene Vergadering.",
+
+          art_gm_title: "De Algemene Vergadering",
+          art_9: "Artikel 9",
+          art_9_text: "Toegang tot de Algemene Vergadering staat open voor alle leden van de Vereniging die niet geschorst zijn.",
+          art_10: "Artikel 10",
+          art_10_text:
+            "De Algemene Vergaderingen worden bijeengeroepen door het Bestuur. De oproepingen worden schriftelijk verzonden naar de adressen van de leden volgens het register bedoeld in Artikel 4.",
+
+          art_liq_title: "Besluiten en Liquidatie",
+          art_16: "Artikel 16",
+          art_16_text:
+            "Tot wijziging van de Statuten van de Vereniging is een besluit van de Algemene Vergadering vereist, die is bijeengeroepen met de mededeling dat aldaar wijziging van de Statuten zal worden voorgesteld.",
+
+          spon_title: "Onze Sponsors",
+          foot_about: "De Netherlands India Association is een netwerkorganisatie voor Nederlands en Indiaas management, onderzoek en cultuur.",
+          foot_links: "Snelle Links",
+          foot_contact: "Adres",
+          foot_follow: "Volg Ons",
+        },
+      };
+
+      // --- LANGUAGE SWITCHER LOGIC ---
+      const langOpts = document.querySelectorAll(".lang-opt");
+
+      function setLanguage(lang) {
+        localStorage.setItem("niaLanguage", lang);
+        document.querySelectorAll("[data-lang-key]").forEach((el) => {
+          const key = el.getAttribute("data-lang-key");
+          if (translations[lang][key]) el.innerText = translations[lang][key];
+        });
+        langOpts.forEach((opt) => {
+          if (opt.dataset.lang === lang) opt.classList.add("active");
+          else opt.classList.remove("active");
+        });
+      }
+
+      langOpts.forEach((opt) => opt.addEventListener("click", () => setLanguage(opt.dataset.lang)));
+      setLanguage(localStorage.getItem("niaLanguage") || "en");
+
+      // --- ANNOUNCEMENT ---
+      if (localStorage.getItem("niaAnnouncementClosed") === "true") {
+        document.getElementById("announcement-bar").style.display = "none";
+      }
+      document.querySelector(".announcement-close").addEventListener("click", () => {
+        document.getElementById("announcement-bar").style.display = "none";
+        localStorage.setItem("niaAnnouncementClosed", "true");
+      });
+
+      // --- NAVBAR SCROLL ---
+      window.addEventListener("scroll", () => {
+        const navbar = document.getElementById("navbar");
+        if (window.scrollY > 50) navbar.classList.add("scrolled");
+        else navbar.classList.remove("scrolled");
+      });
+    </script>
+  </body>
+</html>

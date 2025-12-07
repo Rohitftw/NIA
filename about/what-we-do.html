@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>What We Do - The Netherlands India Association</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <style>
+      /* --- 1. RESET & VARIABLES (Strict Black & White) --- */
+      :root {
+        --bg-body: #ffffff;
+        --bg-light-grey: #f9f9f9;
+        --bg-dark: #111111;
+
+        --text-main: #222222;
+        --text-light: #666666;
+
+        --border-light: #e0e0e0;
+        --border-dark: #000000;
+
+        --font-heading: "Montserrat", sans-serif;
+        --font-body: "Open Sans", sans-serif;
+
+        --spacing-section: 100px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: var(--font-body);
+        color: var(--text-main);
+        background-color: var(--bg-body);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+        transition: all 0.3s ease;
+      }
+      ul {
+        list-style: none;
+      }
+      img {
+        display: block;
+        max-width: 100%;
+      }
+
+      /* Typography */
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-family: var(--font-heading);
+        color: #000;
+        font-weight: 600;
+        letter-spacing: -0.5px;
+      }
+
+      h2 {
+        font-size: 2.2rem;
+        margin-bottom: 1rem;
+      }
+      h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .subtitle {
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        letter-spacing: 2px;
+        color: var(--text-light);
+        margin-bottom: 1rem;
+        display: block;
+        font-weight: 600;
+      }
+
+      p {
+        color: var(--text-light);
+        font-weight: 300;
+        margin-bottom: 1.5rem;
+      }
+
+      /* Container */
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 60px;
+      }
+
+      /* Buttons */
+      .btn {
+        display: inline-block;
+        padding: 12px 24px;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: 1px solid var(--border-dark);
+        white-space: nowrap;
+      }
+      .btn-register {
+        background-color: #000;
+        color: #fff;
+        border-radius: 2px;
+      }
+      .btn-register:hover {
+        background-color: #333;
+      }
+      .btn-outline {
+        background: transparent;
+        color: #000;
+      }
+      .btn-outline:hover {
+        background: #000;
+        color: #fff;
+      }
+
+      /* --- ANNOUNCEMENT STRIP --- */
+      #announcement-bar {
+        background-color: #f4f4f4;
+        color: #000;
+        text-align: center;
+        padding: 10px 40px;
+        font-size: 0.8rem;
+        font-weight: 500;
+        position: relative;
+        border-bottom: 1px solid #ddd;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .announcement-close {
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        font-size: 1rem;
+        cursor: pointer;
+        color: #555;
+        padding: 5px;
+      }
+
+      /* --- NAVBAR --- */
+      /* --- NAVBAR & DROPDOWNS --- */
+      #navbar {
+        position: sticky;
+        top: 0;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(5px);
+        padding: 15px 5%; /* Slightly reduced padding for better logo fit */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 1000;
+        border-bottom: 1px solid transparent;
+        transition: all 0.3s ease;
+      }
+
+      #navbar.scrolled {
+        border-bottom: 1px solid var(--border-light);
+        padding: 10px 5%; /* Slightly reduced padding on scroll */
+      }
+
+      /* --- NEW LOGO STYLES --- */
+      .nav-logo {
+        /* Removed font-weight, font-size, letter-spacing as they are for text */
+        display: flex;
+        align-items: center;
+      }
+
+      .nav-logo img {
+        /* Adjust this max-height to fit your logo size preferences */
+        max-height: 50px;
+        width: auto;
+        transition: all 0.3s ease;
+      }
+
+      /* Optional: Make logo slightly smaller on scroll */
+      #navbar.scrolled .nav-logo img {
+        max-height: 40px;
+      }
+
+      .nav-menu {
+        display: flex;
+        gap: 5px;
+        align-items: center;
+        height: 100%;
+      }
+      .nav-item {
+        position: relative;
+        height: 100%;
+        display: flex;
+        align-items: center;
+      }
+      .nav-link {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: #444;
+        padding: 0 15px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        height: 100%;
+        transition: color 0.3s;
+      }
+      .nav-link:hover {
+        color: #000;
+      }
+      .nav-link i {
+        font-size: 0.7rem;
+        color: #999;
+        margin-top: 2px;
+      }
+
+      /* Dropdown */
+      .dropdown {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: #fff;
+        min-width: 220px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        border-top: 2px solid #000;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px);
+        transition: all 0.3s ease;
+        padding: 10px 0;
+        z-index: 1100;
+      }
+      .nav-item:hover .dropdown {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+      .dropdown li a {
+        display: block;
+        padding: 10px 20px;
+        font-size: 0.85rem;
+        color: #555;
+        transition: 0.2s;
+        border-bottom: 1px solid #f9f9f9;
+      }
+      .dropdown li:last-child a {
+        border-bottom: none;
+      }
+      .dropdown li a:hover {
+        background-color: #f5f5f5;
+        color: #000;
+        padding-left: 25px;
+      }
+
+      .nav-actions {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+      .lang-switch {
+        font-size: 0.8rem;
+        font-weight: 600;
+        display: flex;
+        gap: 5px;
+        cursor: pointer;
+        color: #888;
+      }
+      .lang-opt:hover {
+        color: #000;
+      }
+      .lang-opt.active {
+        color: #000;
+        text-decoration: underline;
+        text-underline-offset: 4px;
+      }
+
+      /* --- PAGE HEADER --- */
+      .page-header {
+        position: relative;
+        height: 60vh;
+        background-color: #000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: #fff;
+        overflow: hidden;
+      }
+      .page-header-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("https://images.unsplash.com/photo-1542640244-7e67286feb8f?auto=format&fit=crop&q=80&w=2000"); /* Culture Image */
+        background-size: cover;
+        background-position: center;
+        opacity: 0.6;
+        filter: grayscale(100%);
+      }
+      .header-content {
+        position: relative;
+        z-index: 10;
+        padding: 0 20px;
+      }
+      .header-title {
+        font-size: 3.5rem;
+        margin-bottom: 10px;
+      }
+      .header-breadcrumb {
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #ccc;
+      }
+
+      /* --- SECTION: TYPE OF ACTIVITIES --- */
+      #activities-intro {
+        padding: var(--spacing-section) 0;
+      }
+      .activities-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: center;
+      }
+      .activities-img {
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+        filter: grayscale(100%);
+        background: #eee;
+      }
+      .activities-text p {
+        font-size: 1rem;
+        line-height: 1.8;
+        margin-bottom: 20px;
+      }
+
+      /* --- SECTION: MAIN PROGRAMS --- */
+      #main-programs {
+        padding: 80px 0;
+        background-color: var(--bg-light-grey);
+      }
+      .programs-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 30px;
+        margin-top: 40px;
+      }
+      .program-card {
+        background: #fff;
+        border: 1px solid var(--border-light);
+        padding: 40px 20px;
+        text-align: center;
+        transition: all 0.3s ease;
+      }
+      .program-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        border-color: #000;
+      }
+      .program-icon {
+        font-size: 2rem;
+        color: #000;
+        margin-bottom: 20px;
+        display: block;
+      }
+      .program-title {
+        font-size: 1rem;
+        font-weight: 600;
+        margin-bottom: 10px;
+        display: block;
+      }
+      .program-date {
+        font-size: 0.8rem;
+        color: var(--text-light);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      /* --- SECTION: ADDITIONAL INFO --- */
+      #other-activities {
+        padding: var(--spacing-section) 0;
+      }
+      .info-block {
+        max-width: 900px;
+        margin: 0 auto;
+      }
+      .info-block h3 {
+        margin-top: 40px;
+        margin-bottom: 20px;
+        font-size: 1.3rem;
+      }
+
+      /* --- SECTION: LOCATIONS --- */
+      #locations {
+        padding: 0 0 var(--spacing-section);
+      }
+      .location-box {
+        border: 1px solid var(--border-light);
+        padding: 40px;
+        background: #fff;
+      }
+      .location-list {
+        font-weight: 500;
+        color: #000;
+      }
+
+      /* --- SECTION: CTA SPLIT --- */
+      #cta-split {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+      .cta-col {
+        padding: 100px 40px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      /* Left: Image Background */
+      .cta-events {
+        background: url("https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&q=80") center/cover;
+        position: relative;
+        color: #fff;
+      }
+      .cta-events::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.7);
+      }
+      .cta-events > * {
+        position: relative;
+        z-index: 2;
+      }
+      .cta-events h3 {
+        color: #fff;
+        margin-bottom: 20px;
+        font-size: 2rem;
+      }
+
+      /* Right: Solid Dark */
+      .cta-work {
+        background: #111;
+        color: #fff;
+      }
+      .cta-work h3 {
+        color: #fff;
+        margin-bottom: 20px;
+        font-size: 2rem;
+      }
+      .cta-work p {
+        color: #ccc;
+        margin-bottom: 30px;
+      }
+
+      /* --- SPONSORS --- */
+      #sponsors {
+        padding: 60px 0;
+        text-align: center;
+        border-top: 1px solid var(--border-light);
+        background: #fff;
+        overflow: hidden;
+      }
+      .sponsor-carousel-container {
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+        margin-top: 40px;
+        white-space: nowrap;
+      }
+      .sponsor-carousel-container::before,
+      .sponsor-carousel-container::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        width: 100px;
+        height: 100%;
+        z-index: 2;
+        pointer-events: none;
+      }
+      .sponsor-carousel-container::before {
+        left: 0;
+        background: linear-gradient(to right, #fff, transparent);
+      }
+      .sponsor-carousel-container::after {
+        right: 0;
+        background: linear-gradient(to left, #fff, transparent);
+      }
+      .sponsor-track {
+        display: inline-block;
+        animation: scroll 30s linear infinite;
+      }
+      .sponsor-track:hover {
+        animation-play-state: paused;
+      }
+      .sponsor-logo {
+        height: 50px;
+        width: auto;
+        margin: 0 40px;
+        display: inline-block;
+        vertical-align: middle;
+        filter: grayscale(100%);
+        opacity: 0.6;
+        transition: all 0.3s ease;
+      }
+      .sponsor-logo:hover {
+        filter: grayscale(0%);
+        opacity: 1;
+        transform: scale(1.05);
+      }
+      @keyframes scroll {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+
+      /* --- FOOTER --- */
+      footer {
+        background-color: #000;
+        color: #fff;
+        padding: 80px 20px 20px;
+        font-size: 0.9rem;
+      }
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: 40px;
+        max-width: 1100px;
+        margin: 0 auto 60px;
+      }
+      .footer-col h4 {
+        color: #fff;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+      }
+      .footer-col p,
+      .footer-col a {
+        color: #888;
+      }
+      .footer-col a:hover {
+        color: #fff;
+      }
+      .footer-col ul li {
+        margin-bottom: 10px;
+      }
+      .footer-bottom {
+        border-top: 1px solid #222;
+        padding-top: 20px;
+        text-align: center;
+        color: #444;
+        font-size: 0.8rem;
+      }
+      .socials a {
+        margin-right: 15px;
+        font-size: 1.2rem;
+      }
+
+      @media (max-width: 900px) {
+        .nav-menu {
+          display: none;
+        }
+        .container {
+          padding: 0 30px;
+        }
+        .activities-grid,
+        .programs-grid,
+        #cta-split {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="announcement-bar">
+      <span data-lang-key="announcement_text">Enhancing friendship and understanding between India and The Netherlands.</span>
+      <button class="announcement-close" aria-label="Close announcement">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+
+    <nav id="navbar">
+      <a href="#" class="nav-logo">
+        <img src="assests/logo.webp" alt="NIA Logo" />
+      </a>
+
+      <ul class="nav-menu">
+        <li class="nav-item">
+          <a href="#home" class="nav-link" data-lang-key="nav_home">Home</a>
+        </li>
+        <li class="nav-item">
+          <span class="nav-link" data-lang-key="nav_about">About Us <i class="fas fa-chevron-down"></i></span>
+          <ul class="dropdown">
+            <li><a href="about/about.html" data-lang-key="nav_about_nia">About NIA</a></li>
+            <li><a href="about/executive-board.html" data-lang-key="nav_board">Executive Board</a></li>
+            <li><a href="about/what-we-do.html" data-lang-key="nav_what_we_do">What we do</a></li>
+            <li><a href="about/history.html" data-lang-key="nav_history_drop">History</a></li>
+            <li><a href="about/constitution.html" data-lang-key="nav_constitution">Constitution of NIA</a></li>
+            <li><a href="about/privacy-policy.html" data-lang-key="nav_privacy">Privacy Policy</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <span class="nav-link" data-lang-key="nav_events">Events <i class="fas fa-chevron-down"></i></span>
+          <ul class="dropdown">
+            <li><a href="events/upcoming-events.html" data-lang-key="nav_upcoming">Upcoming Events</a></li>
+            <li><a href="events/past-events.html" data-lang-key="nav_past">Past Events</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a href="membership.html" class="nav-link" data-lang-key="nav_membership">Membership</a>
+        </li>
+        <li class="nav-item">
+          <a href="articles.html" class="nav-link" data-lang-key="nav_articles">Articles</a>
+        </li>
+        <li class="nav-item">
+          <a href="gallery.html" class="nav-link" data-lang-key="nav_gallery">Gallery</a>
+        </li>
+        <li class="nav-item">
+          <a href="contact-us.html" class="nav-link" data-lang-key="nav_contact">Contact Us</a>
+        </li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="membership.html" class="btn btn-register" data-lang-key="btn_register">Register as a Member</a>
+
+        <div class="lang-switch">
+          <span class="lang-opt active" data-lang="en">EN</span>
+          <span style="color: #ddd">|</span>
+          <span class="lang-opt" data-lang="nl">NL</span>
+        </div>
+      </div>
+    </nav>
+
+    <header class="page-header">
+      <div class="page-header-bg"></div>
+      <div class="header-content">
+        <h1 class="header-title" data-lang-key="wwd_title">What We Do</h1>
+        <span class="header-breadcrumb">About Us / What We Do</span>
+      </div>
+    </header>
+
+    <section id="activities-intro">
+      <div class="container">
+        <div class="activities-grid">
+          <div class="activities-text">
+            <span class="subtitle" data-lang-key="wwd_sub_activities">Our Approach</span>
+            <h2 data-lang-key="wwd_heading_activities">Type of Activities</h2>
+            <p data-lang-key="wwd_para1">
+              NIA organizes different types of events such as cultural, academic and social-political programs. Programs are meant to interest people
+              in aspects of Indian and Dutch culture in an engaging way.
+            </p>
+            <p data-lang-key="wwd_para2">
+              Our social get-togethers generally start with an informal meet and greet, followed by the programme proper and a reception or evening
+              program.
+            </p>
+            <p data-lang-key="wwd_para3">
+              All events have a unique character because of its Dutch-Indian mix. Besides networking NIA strives to create an environment in which
+              people can enjoy each other's company, background, experience and personality. Quality food and drinks – both Indian and Dutch – flavour
+              our gatherings, whereas musical or dance performances spice up the events.
+            </p>
+          </div>
+          <div>
+            <img
+              src="https://images.unsplash.com/photo-1512413914633-b5043f4041ea?auto=format&fit=crop&q=80&w=800"
+              alt="Cultural Event"
+              class="activities-img"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="main-programs">
+      <div class="container">
+        <div style="text-align: center; max-width: 700px; margin: 0 auto 40px">
+          <h2 data-lang-key="wwd_heading_programs">Main Programs</h2>
+          <p data-lang-key="wwd_programs_intro">
+            NIA organizes 3 major cultural events and 1 academic program, seminar or debate per year. These are:
+          </p>
+        </div>
+
+        <div class="programs-grid">
+          <div class="program-card">
+            <i class="fas fa-crown program-icon"></i>
+            <span class="program-title" data-lang-key="prog_1_title">King's Day Celebration</span>
+            <span class="program-date" data-lang-key="prog_1_date">Around 27 April</span>
+          </div>
+          <div class="program-card">
+            <i class="fas fa-graduation-cap program-icon"></i>
+            <span class="program-title" data-lang-key="prog_2_title">Academic Program / Debate</span>
+            <span class="program-date" data-lang-key="prog_2_date">May / June</span>
+          </div>
+          <div class="program-card">
+            <i class="fas fa-flag program-icon"></i>
+            <span class="program-title" data-lang-key="prog_3_title">Indian Independence Day</span>
+            <span class="program-date" data-lang-key="prog_3_date">15 August</span>
+          </div>
+          <div class="program-card">
+            <i class="fas fa-lightbulb program-icon"></i> <span class="program-title" data-lang-key="prog_4_title">Diwali / Sinterklaas</span>
+            <span class="program-date" data-lang-key="prog_4_date">November</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="other-activities">
+      <div class="container">
+        <div class="info-block">
+          <span class="subtitle" data-lang-key="wwd_sub_more">More to Explore</span>
+          <h3 data-lang-key="wwd_heading_informal">Informal Outings & Groups</h3>
+          <p data-lang-key="wwd_para_informal">
+            In addition smaller activities are planned. These are informal outings aiming at bringing together members and guests who share the same
+            interests. We will visit an art or photographic exhibition, see a film, visit a concert or artist studio. Everyone can bring in his or her
+            expertise, special interest and come up with an idea.
+          </p>
+          <p data-lang-key="wwd_para_rep">
+            The representative team in simple NIA aims for a short communication (Facebook, website, etc). Knowing the place, event and time, a
+            meeting point will be given. See the Upcoming events for the dates of the main and in-between activities.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="locations">
+      <div class="container">
+        <div class="location-box">
+          <h3 data-lang-key="wwd_heading_loc">Locations</h3>
+          <p data-lang-key="wwd_para_loc">
+            Our members come from all over the country and therefore NIA organizes its events at suitable locations in different places.
+          </p>
+          <p>
+            <span data-lang-key="wwd_loc_label">Some recent locations:</span> <br />
+            <span class="location-list"
+              >Keukenhof Lisse, Restaurant Indiaas - (Noordwijk) aan zee, Erasmus Paviljoen Rotterdam, Cobra Museum Amstelveen, Probouws The Hague,
+              Gandhi Center The Hague, Hilton Hotel Amsterdam, Kasteel de Wittenburg Wassenaar, Spirit center in Voorschoten, Airbus Heliplaza The
+              Hague.</span
+            >
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="cta-split">
+      <div class="cta-col cta-events">
+        <h3 data-lang-key="cta_events_title">Upcoming Events</h3>
+        <p data-lang-key="cta_events_text">See the upcoming events for the dates of the main and in-between activities.</p>
+        <a href="#" class="btn btn-primary" style="background: #fff; color: #000; border: none" data-lang-key="btn_view_events">View Events</a>
+      </div>
+      <div class="cta-col cta-work">
+        <h3 data-lang-key="cta_work_title">Let's Work Together</h3>
+        <p data-lang-key="cta_work_text">Get in touch so we can start making together.</p>
+        <a href="#" class="btn btn-outline" style="border-color: #fff; color: #fff" data-lang-key="btn_contact_work">Contact Us</a>
+      </div>
+    </section>
+
+    <section id="sponsors">
+      <div class="container">
+        <span class="subtitle" style="text-align: center; display: block" data-lang-key="spon_title">Sponsors</span>
+        <div class="sponsor-carousel-container">
+          <div class="sponsor-track">
+            <img src="https://placehold.co/150x60/eeeeee/999999?text=AdevIT" alt="Sponsor" class="sponsor-logo" />
+            <img src="https://placehold.co/150x60/eeeeee/999999?text=HouseOfSpice" alt="Sponsor" class="sponsor-logo" />
+            <img src="https://placehold.co/150x60/eeeeee/999999?text=Nitya" alt="Sponsor" class="sponsor-logo" />
+            <img src="https://placehold.co/150x60/eeeeee/999999?text=Partner1" alt="Sponsor" class="sponsor-logo" />
+            <img src="https://placehold.co/150x60/eeeeee/999999?text=Partner2" alt="Sponsor" class="sponsor-logo" />
+            <img src="https://placehold.co/150x60/eeeeee/999999?text=AdevIT" alt="Sponsor" class="sponsor-logo" />
+            <img src="https://placehold.co/150x60/eeeeee/999999?text=HouseOfSpice" alt="Sponsor" class="sponsor-logo" />
+            <img src="https://placehold.co/150x60/eeeeee/999999?text=Nitya" alt="Sponsor" class="sponsor-logo" />
+            <img src="https://placehold.co/150x60/eeeeee/999999?text=Partner1" alt="Sponsor" class="sponsor-logo" />
+            <img src="https://placehold.co/150x60/eeeeee/999999?text=Partner2" alt="Sponsor" class="sponsor-logo" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>NIA.</h4>
+          <p data-lang-key="foot_about">
+            The Netherlands India Association is a networking organization for Dutch and Indian management, research, and culture.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4 data-lang-key="foot_links">Quick Links</h4>
+          <ul>
+            <li><a href="about/about.html" data-lang-key="nav_about">About Us</a></li>
+            <li><a href="#objectives" data-lang-key="nav_objectives">Objectives</a></li>
+            <li><a href="about/history.html" data-lang-key="nav_history">History</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 data-lang-key="foot_contact">Address</h4>
+          <p>The Hague, 2500 GK<br />The Netherlands</p>
+          <p>info@niaonline.org</p>
+        </div>
+        <div class="footer-col">
+          <h4 data-lang-key="foot_follow">Follow Us</h4>
+          <div class="socials">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2023 Netherlands India Association. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      // --- TRANSLATIONS ---
+      const translations = {
+        en: {
+          announcement_text: "Enhancing friendship and understanding between India and The Netherlands.",
+
+          // Nav
+          nav_home: "Home",
+          nav_about: "About Us",
+          nav_about_nia: "About NIA",
+          nav_board: "Executive Board",
+          nav_what_we_do: "What we do",
+          nav_history_drop: "History",
+          nav_constitution: "Constitution of NIA",
+          nav_privacy: "Privacy Policy",
+          nav_events: "Events",
+          nav_upcoming: "Upcoming Events",
+          nav_past: "Past Events",
+          nav_membership: "Membership",
+          nav_articles: "Articles",
+          nav_gallery: "Gallery",
+          nav_contact: "Contact Us",
+          btn_register: "Register as a Member",
+
+          // Page Specific
+          wwd_title: "What We Do",
+          wwd_sub_activities: "Our Approach",
+          wwd_heading_activities: "Type of Activities",
+          wwd_para1:
+            "NIA organizes different types of events such as cultural, academic and social-political programs. Programs are meant to interest people in aspects of Indian and Dutch culture in an engaging way.",
+          wwd_para2:
+            "Our social get-togethers generally start with an informal meet and greet, followed by the programme proper and a reception or evening program.",
+          wwd_para3:
+            "All events have a unique character because of its Dutch-Indian mix. Besides networking NIA strives to create an environment in which people can enjoy each other's company, background, experience and personality. Quality food and drinks – both Indian and Dutch – flavour our gatherings, whereas musical or dance performances spice up the events.",
+
+          wwd_heading_programs: "Main Programs",
+          wwd_programs_intro: "NIA organizes 3 major cultural events and 1 academic program, seminar or debate per year. These are:",
+          prog_1_title: "King's Day Celebration",
+          prog_1_date: "Around 27 April",
+          prog_2_title: "Academic Program / Debate",
+          prog_2_date: "May / June",
+          prog_3_title: "Indian Independence Day",
+          prog_3_date: "15 August",
+          prog_4_title: "Diwali / Sinterklaas",
+          prog_4_date: "November",
+
+          wwd_sub_more: "More to Explore",
+          wwd_heading_informal: "Informal Outings & Groups",
+          wwd_para_informal:
+            "In addition smaller activities are planned. These are informal outings aiming at bringing together members and guests who share the same interests. We will visit an art or photographic exhibition, see a film, visit a concert or artist studio. Everyone can bring in his or her expertise, special interest and come up with an idea.",
+          wwd_para_rep:
+            "The representative team in simple NIA aims for a short communication (Facebook, website, etc). Knowing the place, event and time, a meeting point will be given. See the Upcoming events for the dates of the main and in-between activities.",
+
+          wwd_heading_loc: "Locations",
+          wwd_para_loc:
+            "Our members come from all over the country and therefore NIA organizes its events at suitable locations in different places.",
+          wwd_loc_label: "Some recent locations:",
+
+          cta_events_title: "Upcoming Events",
+          cta_events_text: "See the upcoming events for the dates of the main and in-between activities.",
+          btn_view_events: "View Events",
+          cta_work_title: "Let's Work Together",
+          cta_work_text: "Get in touch so we can start making together.",
+          btn_contact_work: "Contact Us",
+
+          spon_title: "Sponsors",
+          foot_about: "The Netherlands India Association is a networking organization for Dutch and Indian management, research, and culture.",
+          foot_links: "Quick Links",
+          foot_contact: "Address",
+          foot_follow: "Follow Us",
+        },
+        nl: {
+          announcement_text: "Het versterken van vriendschap en begrip tussen India en Nederland.",
+
+          nav_home: "Home",
+          nav_about: "Over Ons",
+          nav_about_nia: "Over NIA",
+          nav_board: "Bestuur",
+          nav_what_we_do: "Wat we doen",
+          nav_history_drop: "Geschiedenis",
+          nav_constitution: "Statuten van NIA",
+          nav_privacy: "Privacybeleid",
+          nav_events: "Evenementen",
+          nav_upcoming: "Aankomende Evenementen",
+          nav_past: "Vorige Evenementen",
+          nav_membership: "Lidmaatschap",
+          nav_articles: "Artikelen",
+          nav_gallery: "Galerij",
+          nav_contact: "Contact",
+          btn_register: "Registreer als Lid",
+
+          wwd_title: "Wat We Doen",
+          wwd_sub_activities: "Onze Aanpak",
+          wwd_heading_activities: "Soort Activiteiten",
+          wwd_para1:
+            "NIA organiseert verschillende soorten evenementen zoals culturele, academische en sociaal-politieke programma's. Programma's zijn bedoeld om mensen op een boeiende manier te interesseren voor aspecten van de Indiase en Nederlandse cultuur.",
+          wwd_para2:
+            "Onze sociale bijeenkomsten beginnen over het algemeen met een informele 'meet and greet', gevolgd door het eigenlijke programma en een receptie of avondprogramma.",
+          wwd_para3:
+            "Alle evenementen hebben een uniek karakter door de Nederlands-Indiase mix. Naast netwerken streeft NIA ernaar een omgeving te creëren waarin mensen kunnen genieten van elkaars gezelschap, achtergrond, ervaring en persoonlijkheid. Kwalitatief eten en drinken – zowel Indiaas als Nederlands – geven smaak aan onze bijeenkomsten, terwijl muziek- of dansoptredens de evenementen opluisteren.",
+
+          wwd_heading_programs: "Hoofdprogramma's",
+          wwd_programs_intro: "NIA organiseert jaarlijks 3 grote culturele evenementen en 1 academisch programma, seminar of debat. Dit zijn:",
+          prog_1_title: "Koningsdag Viering",
+          prog_1_date: "Rond 27 April",
+          prog_2_title: "Academisch Programma / Debat",
+          prog_2_date: "Mei / Juni",
+          prog_3_title: "Onafhankelijkheidsdag India",
+          prog_3_date: "15 Augustus",
+          prog_4_title: "Diwali / Sinterklaas",
+          prog_4_date: "November",
+
+          wwd_sub_more: "Meer te Ontdekken",
+          wwd_heading_informal: "Informele Uitjes & Groepen",
+          wwd_para_informal:
+            "Daarnaast worden er kleinere activiteiten gepland. Dit zijn informele uitjes gericht op het samenbrengen van leden en gasten die dezelfde interesses delen. We bezoeken een kunst- of fototentoonstelling, kijken een film, bezoeken een concert of kunstenaarsatelier.",
+          wwd_para_rep:
+            "Het representatieve team streeft naar korte communicatie (Facebook, website, etc). Locatie, evenement en tijd worden doorgegeven.",
+
+          wwd_heading_loc: "Locaties",
+          wwd_para_loc:
+            "Onze leden komen uit het hele land en daarom organiseert NIA haar evenementen op geschikte locaties in verschillende plaatsen.",
+          wwd_loc_label: "Enkele recente locaties:",
+
+          cta_events_title: "Aankomende Evenementen",
+          cta_events_text: "Bekijk de aankomende evenementen voor de data van de hoofd- en tussenactiviteiten.",
+          btn_view_events: "Bekijk Evenementen",
+          cta_work_title: "Laten we samenwerken",
+          cta_work_text: "Neem contact op zodat we samen kunnen beginnen.",
+          btn_contact_work: "Neem contact op",
+
+          spon_title: "Onze Sponsors",
+          foot_about: "De Netherlands India Association is een netwerkorganisatie voor Nederlands en Indiaas management, onderzoek en cultuur.",
+          foot_links: "Snelle Links",
+          foot_contact: "Adres",
+          foot_follow: "Volg Ons",
+        },
+      };
+
+      // --- LANGUAGE SWITCHER LOGIC ---
+      const langOpts = document.querySelectorAll(".lang-opt");
+
+      function setLanguage(lang) {
+        localStorage.setItem("niaLanguage", lang);
+        document.querySelectorAll("[data-lang-key]").forEach((el) => {
+          const key = el.getAttribute("data-lang-key");
+          if (translations[lang][key]) el.innerText = translations[lang][key];
+        });
+        langOpts.forEach((opt) => {
+          if (opt.dataset.lang === lang) opt.classList.add("active");
+          else opt.classList.remove("active");
+        });
+      }
+
+      langOpts.forEach((opt) => opt.addEventListener("click", () => setLanguage(opt.dataset.lang)));
+      setLanguage(localStorage.getItem("niaLanguage") || "en");
+
+      // --- ANNOUNCEMENT ---
+      if (localStorage.getItem("niaAnnouncementClosed") === "true") {
+        document.getElementById("announcement-bar").style.display = "none";
+      }
+      document.querySelector(".announcement-close").addEventListener("click", () => {
+        document.getElementById("announcement-bar").style.display = "none";
+        localStorage.setItem("niaAnnouncementClosed", "true");
+      });
+
+      // --- NAVBAR SCROLL ---
+      window.addEventListener("scroll", () => {
+        const navbar = document.getElementById("navbar");
+        if (window.scrollY > 50) navbar.classList.add("scrolled");
+        else navbar.classList.remove("scrolled");
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Articles - The Netherlands India Association</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <style>
+      /* --- 1. RESET & VARIABLES (Strict Black & White) --- */
+      :root {
+        --bg-body: #ffffff;
+        --bg-light-grey: #f9f9f9;
+        --bg-dark: #111111;
+        --text-main: #222222;
+        --text-light: #666666;
+        --border-light: #e0e0e0;
+        --border-dark: #000000;
+        --font-heading: "Montserrat", sans-serif;
+        --font-body: "Open Sans", sans-serif;
+        --spacing-section: 100px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: var(--font-body);
+        color: var(--text-main);
+        background-color: var(--bg-body);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+      body.modal-open {
+        overflow: hidden;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+        transition: all 0.3s ease;
+      }
+      ul {
+        list-style: none;
+      }
+      img {
+        display: block;
+        max-width: 100%;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-family: var(--font-heading);
+        color: #000;
+        font-weight: 600;
+        letter-spacing: -0.5px;
+      }
+      h2 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+      }
+      p {
+        color: var(--text-light);
+        font-weight: 300;
+        margin-bottom: 1.5rem;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 60px;
+      }
+
+      /* Buttons */
+      .btn {
+        display: inline-block;
+        padding: 12px 24px;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: 1px solid var(--border-dark);
+        white-space: nowrap;
+        text-align: center;
+      }
+      .btn-register {
+        background-color: #000;
+        color: #fff;
+        border-radius: 2px;
+      }
+      .btn-register:hover {
+        background-color: #333;
+      }
+      .btn-outline {
+        background: transparent;
+        color: #000;
+      }
+      .btn-outline:hover {
+        background: #000;
+        color: #fff;
+      }
+
+      /* --- NAVBAR & ANNOUNCEMENT --- */
+      #announcement-bar {
+        background-color: #f4f4f4;
+        color: #000;
+        text-align: center;
+        padding: 10px 40px;
+        font-size: 0.8rem;
+        font-weight: 500;
+        position: relative;
+        border-bottom: 1px solid #ddd;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .announcement-close {
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        font-size: 1rem;
+        cursor: pointer;
+        color: #555;
+        padding: 5px;
+      }
+      /* --- NAVBAR & DROPDOWNS --- */
+      #navbar {
+        position: sticky;
+        top: 0;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(5px);
+        padding: 15px 5%; /* Slightly reduced padding for better logo fit */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 1000;
+        border-bottom: 1px solid transparent;
+        transition: all 0.3s ease;
+      }
+
+      #navbar.scrolled {
+        border-bottom: 1px solid var(--border-light);
+        padding: 10px 5%; /* Slightly reduced padding on scroll */
+      }
+
+      /* --- NEW LOGO STYLES --- */
+      .nav-logo {
+        /* Removed font-weight, font-size, letter-spacing as they are for text */
+        display: flex;
+        align-items: center;
+      }
+
+      .nav-logo img {
+        /* Adjust this max-height to fit your logo size preferences */
+        max-height: 50px;
+        width: auto;
+        transition: all 0.3s ease;
+      }
+
+      /* Optional: Make logo slightly smaller on scroll */
+      #navbar.scrolled .nav-logo img {
+        max-height: 40px;
+      }
+      .nav-menu {
+        display: flex;
+        gap: 5px;
+        align-items: center;
+        height: 100%;
+      }
+      .nav-item {
+        position: relative;
+        height: 100%;
+        display: flex;
+        align-items: center;
+      }
+      .nav-link {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: #444;
+        padding: 0 15px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        height: 100%;
+        transition: color 0.3s;
+      }
+      .nav-link:hover {
+        color: #000;
+      }
+      .nav-link i {
+        font-size: 0.7rem;
+        color: #999;
+        margin-top: 2px;
+      }
+      .dropdown {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: #fff;
+        min-width: 220px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        border-top: 2px solid #000;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px);
+        transition: all 0.3s ease;
+        padding: 10px 0;
+        z-index: 1100;
+      }
+      .nav-item:hover .dropdown {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+      .dropdown li a {
+        display: block;
+        padding: 10px 20px;
+        font-size: 0.85rem;
+        color: #555;
+        transition: 0.2s;
+        border-bottom: 1px solid #f9f9f9;
+      }
+      .dropdown li:last-child a {
+        border-bottom: none;
+      }
+      .dropdown li a:hover {
+        background-color: #f5f5f5;
+        color: #000;
+        padding-left: 25px;
+      }
+      .nav-actions {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+      .lang-switch {
+        font-size: 0.8rem;
+        font-weight: 600;
+        display: flex;
+        gap: 5px;
+        cursor: pointer;
+        color: #888;
+      }
+      .lang-opt:hover {
+        color: #000;
+      }
+      .lang-opt.active {
+        color: #000;
+        text-decoration: underline;
+        text-underline-offset: 4px;
+      }
+
+      /* --- PAGE HERO --- */
+      .page-header {
+        position: relative;
+        height: 50vh;
+        background-color: #000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: #fff;
+        overflow: hidden;
+      }
+      .page-header-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&q=80&w=2000"); /* Writing/Paper */
+        background-size: cover;
+        background-position: center;
+        opacity: 0.5;
+        filter: grayscale(100%);
+      }
+      .header-content {
+        position: relative;
+        z-index: 10;
+        padding: 0 20px;
+      }
+      .header-title {
+        font-size: 3.5rem;
+        margin-bottom: 10px;
+      }
+      .header-breadcrumb {
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #ccc;
+      }
+
+      /* --- ARTICLES GRID --- */
+      #article-intro {
+        padding: 60px 0 40px;
+        text-align: center;
+        max-width: 900px;
+        margin: 0 auto;
+      }
+      .intro-text {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: #333;
+      }
+
+      .article-grid-section {
+        padding-bottom: 100px;
+      }
+      .article-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 40px;
+      }
+
+      .article-card {
+        background: #fff;
+        border: 1px solid var(--border-light);
+        transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+      .article-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
+        border-color: #000;
+      }
+
+      .card-header {
+        height: 180px;
+        overflow: hidden;
+        background: #eee;
+        position: relative;
+      }
+      .card-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: grayscale(100%);
+        transition: 0.3s;
+      }
+      .article-card:hover .card-img {
+        filter: grayscale(0%);
+        transform: scale(1.05);
+      }
+
+      .card-body {
+        padding: 25px;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .card-tag {
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #888;
+        margin-bottom: 10px;
+        display: block;
+      }
+      .card-title {
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+        line-height: 1.4;
+        font-weight: 600;
+      }
+      .read-more-btn {
+        margin-top: 15px;
+        width: 100%;
+      }
+
+      /* --- ARTICLE READER MODAL (The "New Page" Feel) --- */
+      .article-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #fff;
+        z-index: 2000;
+        overflow-y: auto;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.4s ease;
+        transform: translateY(20px);
+      }
+      .article-modal.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+
+      /* Modal Layout */
+      .article-modal-inner {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 80px 40px;
+        position: relative;
+      }
+      .modal-close {
+        position: fixed;
+        top: 30px;
+        right: 30px;
+        font-size: 2rem;
+        cursor: pointer;
+        color: #000;
+        z-index: 2010;
+        background: #fff;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        transition: 0.3s;
+      }
+      .modal-close:hover {
+        transform: rotate(90deg);
+        background: #000;
+        color: #fff;
+      }
+
+      /* Article Content Style */
+      .article-hero {
+        margin-bottom: 40px;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 40px;
+        text-align: center;
+      }
+      .article-main-title {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+        line-height: 1.2;
+      }
+      .article-subtitle {
+        font-size: 1.1rem;
+        color: #666;
+        font-style: italic;
+        margin-bottom: 30px;
+        display: block;
+      }
+      .article-author-img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin: 0 auto 20px;
+        filter: grayscale(100%);
+        border: 3px solid #f0f0f0;
+      }
+
+      .article-body {
+        font-size: 1.1rem;
+        line-height: 1.9;
+        color: #333;
+        text-align: justify;
+      }
+      .article-body h4 {
+        font-size: 1.3rem;
+        margin-top: 40px;
+        margin-bottom: 15px;
+        border-left: 3px solid #000;
+        padding-left: 15px;
+      }
+      .article-body p {
+        margin-bottom: 20px;
+      }
+
+      /* Quote */
+      .article-quote {
+        font-family: "Times New Roman", serif;
+        font-size: 1.4rem;
+        font-style: italic;
+        color: #555;
+        text-align: center;
+        margin: 40px 0;
+        padding: 20px;
+        border-top: 1px solid #eee;
+        border-bottom: 1px solid #eee;
+      }
+
+      /* Sponsors */
+      #sponsors {
+        padding: 60px 0;
+        text-align: center;
+        border-top: 1px solid var(--border-light);
+        background: #fff;
+        overflow: hidden;
+      }
+      .sponsor-carousel-container {
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+        margin-top: 40px;
+        white-space: nowrap;
+      }
+      .sponsor-carousel-container::before,
+      .sponsor-carousel-container::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        width: 100px;
+        height: 100%;
+        z-index: 2;
+        pointer-events: none;
+      }
+      .sponsor-carousel-container::before {
+        left: 0;
+        background: linear-gradient(to right, #fff, transparent);
+      }
+      .sponsor-carousel-container::after {
+        right: 0;
+        background: linear-gradient(to left, #fff, transparent);
+      }
+      .sponsor-track {
+        display: inline-block;
+        animation: scroll 30s linear infinite;
+      }
+      .sponsor-track:hover {
+        animation-play-state: paused;
+      }
+      .sponsor-logo {
+        height: 50px;
+        width: auto;
+        margin: 0 40px;
+        display: inline-block;
+        vertical-align: middle;
+        filter: grayscale(100%);
+        opacity: 0.6;
+        transition: all 0.3s ease;
+      }
+      .sponsor-logo:hover {
+        filter: grayscale(0%);
+        opacity: 1;
+        transform: scale(1.05);
+      }
+      @keyframes scroll {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+
+      /* Footer */
+      footer {
+        background-color: #000;
+        color: #fff;
+        padding: 80px 20px 20px;
+        font-size: 0.9rem;
+      }
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: 40px;
+        max-width: 1100px;
+        margin: 0 auto 60px;
+      }
+      .footer-col h4 {
+        color: #fff;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+      }
+      .footer-col p,
+      .footer-col a {
+        color: #888;
+      }
+      .footer-col a:hover {
+        color: #fff;
+      }
+      .footer-col ul li {
+        margin-bottom: 10px;
+      }
+      .footer-bottom {
+        border-top: 1px solid #222;
+        padding-top: 20px;
+        text-align: center;
+        color: #444;
+        font-size: 0.8rem;
+      }
+      .socials a {
+        margin-right: 15px;
+        font-size: 1.2rem;
+      }
+
+      @media (max-width: 900px) {
+        .nav-menu {
+          display: none;
+        }
+        .container {
+          padding: 0 30px;
+        }
+        .article-grid {
+          grid-template-columns: 1fr;
+        }
+        .article-modal-inner {
+          padding: 60px 20px;
+        }
+        .header-title {
+          font-size: 2.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="announcement-bar">
+      <span data-lang-key="announcement_text">Enhancing friendship and understanding between India and The Netherlands.</span>
+      <button class="announcement-close" aria-label="Close announcement"><i class="fas fa-times"></i></button>
+    </div>
+
+    <nav id="navbar">
+      <a href="#" class="nav-logo">
+        <img src="assests/logo.webp" alt="NIA Logo" />
+      </a>
+
+      <ul class="nav-menu">
+        <li class="nav-item">
+          <a href="#home" class="nav-link" data-lang-key="nav_home">Home</a>
+        </li>
+        <li class="nav-item">
+          <span class="nav-link" data-lang-key="nav_about">About Us <i class="fas fa-chevron-down"></i></span>
+          <ul class="dropdown">
+            <li><a href="about/about.html" data-lang-key="nav_about_nia">About NIA</a></li>
+            <li><a href="about/executive-board.html" data-lang-key="nav_board">Executive Board</a></li>
+            <li><a href="about/what-we-do.html" data-lang-key="nav_what_we_do">What we do</a></li>
+            <li><a href="about/history.html" data-lang-key="nav_history_drop">History</a></li>
+            <li><a href="about/constitution.html" data-lang-key="nav_constitution">Constitution of NIA</a></li>
+            <li><a href="about/privacy-policy.html" data-lang-key="nav_privacy">Privacy Policy</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <span class="nav-link" data-lang-key="nav_events">Events <i class="fas fa-chevron-down"></i></span>
+          <ul class="dropdown">
+            <li><a href="events/upcoming-events.html" data-lang-key="nav_upcoming">Upcoming Events</a></li>
+            <li><a href="events/past-events.html" data-lang-key="nav_past">Past Events</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a href="membership.html" class="nav-link" data-lang-key="nav_membership">Membership</a>
+        </li>
+        <li class="nav-item">
+          <a href="articles.html" class="nav-link" data-lang-key="nav_articles">Articles</a>
+        </li>
+        <li class="nav-item">
+          <a href="gallery.html" class="nav-link" data-lang-key="nav_gallery">Gallery</a>
+        </li>
+        <li class="nav-item">
+          <a href="contact-us.html" class="nav-link" data-lang-key="nav_contact">Contact Us</a>
+        </li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="membership.html" class="btn btn-register" data-lang-key="btn_register">Register as a Member</a>
+
+        <div class="lang-switch">
+          <span class="lang-opt active" data-lang="en">EN</span>
+          <span style="color: #ddd">|</span>
+          <span class="lang-opt" data-lang="nl">NL</span>
+        </div>
+      </div>
+    </nav>
+
+    <header class="page-header">
+      <div class="page-header-bg"></div>
+      <div class="header-content">
+        <h1 class="header-title" data-lang-key="art_title">Articles</h1>
+        <span class="header-breadcrumb">Home / Articles</span>
+      </div>
+    </header>
+
+    <section id="article-intro">
+      <div class="container">
+        <p class="intro-text" data-lang-key="art_intro">
+          The Netherlands India Association (NIA) celebrated its 70th Anniversary in 2021. NIA was started in 1951 in Leiden, a historic town in The
+          Netherlands and it has come a long way. This collection of articles highlights our distinguished members and their contributions.
+        </p>
+      </div>
+    </section>
+
+    <section class="article-grid-section">
+      <div class="container">
+        <div class="article-grid" id="article-grid-container"></div>
+      </div>
+    </section>
+
+    <div id="article-modal" class="article-modal">
+      <div class="modal-close" id="close-modal"><i class="fas fa-times"></i></div>
+      <div class="article-modal-inner" id="modal-content"></div>
+    </div>
+
+    <section id="sponsors">
+      <div class="container">
+        <span class="subtitle" style="text-align: center; display: block" data-lang-key="spon_title">Our Sponsors</span>
+        <div class="sponsor-carousel-container">
+          <div class="sponsor-track">
+            <img src="https://placehold.co/150x60/eeeeee/999999?text=AdevIT" alt="Sponsor" class="sponsor-logo" />
+            <img src="https://placehold.co/150x60/eeeeee/999999?text=HouseOfSpice" alt="Sponsor" class="sponsor-logo" />
+            <img src="https://placehold.co/150x60/eeeeee/999999?text=Nitya" alt="Sponsor" class="sponsor-logo" />
+            <img src="https://placehold.co/150x60/eeeeee/999999?text=Partner1" alt="Sponsor" class="sponsor-logo" />
+            <img src="https://placehold.co/150x60/eeeeee/999999?text=Partner2" alt="Sponsor" class="sponsor-logo" />
+            <img src="https://placehold.co/150x60/eeeeee/999999?text=AdevIT" alt="Sponsor" class="sponsor-logo" />
+            <img src="https://placehold.co/150x60/eeeeee/999999?text=HouseOfSpice" alt="Sponsor" class="sponsor-logo" />
+            <img src="https://placehold.co/150x60/eeeeee/999999?text=Nitya" alt="Sponsor" class="sponsor-logo" />
+            <img src="https://placehold.co/150x60/eeeeee/999999?text=Partner1" alt="Sponsor" class="sponsor-logo" />
+            <img src="https://placehold.co/150x60/eeeeee/999999?text=Partner2" alt="Sponsor" class="sponsor-logo" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>NIA.</h4>
+          <p data-lang-key="foot_about">
+            The Netherlands India Association is a networking organization for Dutch and Indian management, research, and culture.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4 data-lang-key="foot_links">Quick Links</h4>
+          <ul>
+            <li><a href="about/about.html" data-lang-key="nav_about">About Us</a></li>
+            <li><a href="#objectives" data-lang-key="nav_objectives">Objectives</a></li>
+            <li><a href="about/history.html" data-lang-key="nav_history">History</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 data-lang-key="foot_contact">Address</h4>
+          <p>The Hague, 2500 GK<br />The Netherlands</p>
+          <p>info@niaonline.org</p>
+        </div>
+        <div class="footer-col">
+          <h4 data-lang-key="foot_follow">Follow Us</h4>
+          <div class="socials">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2023 Netherlands India Association. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      // --- 1. ARTICLE DATA (Based on Screenshots) ---
+      const articles = [
+        {
+          id: 1,
+          name: "Dr. Bhaswati Bhattacharya",
+          title: "Know Your NIA Member - Dr. Bhaswati Bhattacharya",
+          subtitle: "Historian of Indian Coffee House, specialist in Bengali culture",
+          image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=400", // Placeholder female
+          content: `
+                    <h4>Background</h4>
+                    <p>I taught myself Dutch in Calcutta and came to the Netherlands to study the archives of the Dutch East India Company in the late 1990s. Upon my return to India, I worked at the National Library of India in Calcutta and taught at Vidyasagar University, West Bengal. While in the Netherlands, I had met Dr. Victor van Bijlert, who was then busy with his research and PhD at that time. We kept on writing back and later we got married in 1999.</p>
+                    <p>Since I came to the Netherlands in 1999 to live here, I have taught briefly at the universities in Leiden and Rotterdam, but from the beginning, I have mostly been associated as a researcher with institutions like the International Institute of Social History (Amsterdam) and the International Institute of Asian Studies (Leiden). Between the years of 2000 to 2005 when I taught at Rabindra Bharati University for a year. Since 2011 I work at Göttingen University in Germany as a Senior Research Fellow and I have been commuting between the two countries since.</p>
+                    <h4>Association with NIA</h4>
+                    <p>Mrs. Marianne Oort, a close friend and the late Dr. D.H. Koster introduced me to the Association. I attended the activities like the celebration of the Independence Day and Christmas organized by NIA. After we returned from India in 2005, we became members, usually attending the programmes when possible. Dr. Victor van Bijlert, my husband, is currently the Secretary of the Executive Board of NIA.</p>
+                    <h4>Advice</h4>
+                    <p>NIA consists of more than 200 nationalities. The country is multi-cultural. Working in different sectors of the economy, Indians are all over the country. While on the whole Indians are well integrated, some remain insular within their kind. When you are living in a country for a long time, the benefit is only yours when you learn the language and aspire to mix in the local culture beyond mere needs, exchange and survival.</p>
+                `,
+        },
+        {
+          id: 2,
+          name: "Dr. Pramod Saxena",
+          title: "Know Your NIA Member - Dr. Pramod Saxena",
+          subtitle: "Distinguished career in Pharmacology & Loyal Member of NIA for last 30 Years.",
+          image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400", // Placeholder male
+          content: `
+                    <h4>Background</h4>
+                    <p>Born in 1930, I graduated in 1951 and entered King George's Medical College, Lucknow obtaining M.B.B.S. (1956) and M.D. (Pharmacology). Gold Medal (1959) degrees. Having lost our father in 1932 and mother in 1943, things were not easy for me and my 3 younger siblings. But, fortunately we all made it well.</p>
+                    <p>During 1957-1960, I worked as a Family Physician in Lucknow before joining N.V. Organon in Oss, The Netherlands as a Pharmacologist in 1960. There, I contributed to development of main antidepressant Mianserin and several other drugs.</p>
+                    <h4>Academic Service</h4>
+                    <p>My research involved serotonin, migraine and hypertension. I contributed towards development of Triptans for migraine treatment. In 1990, I established Erasmus Pharma, being its Managing Director until 2000 and Chairman Supervisory Board until 2010. Some 40 'promovendi' successfully defended thesis under my supervision. With over 600 publications and 22k citations.</p>
+                    <h4>Association with NIA</h4>
+                    <p>I became a member of NIA more than 30 years ago and have participated in its activities ever since. I befriended Late Dr. M.L. Gupta in the organization of 'Indian Mela's'. For four years in early 90s, I was also a Board member of NIA during presidency of Professor George Woudenberg.</p>
+                `,
+        },
+        {
+          id: 3,
+          name: "Gerda Theuns-de Boer",
+          title: "Know Your NIA Member - Gerda Theuns-de Boer",
+          subtitle: "Loyal member of NIA from last 40 Years",
+          image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&q=80&w=400", // Placeholder female
+          content: `
+                    <h4>Introduction</h4>
+                    <p>In the summer of 1972 at the age of 21, a life-changing event took place. The trip was an adventure travel starting from Amsterdam set off for a six week overland journey to Delhi by bus with an international group. It filled precise living, teaching free period. I had prepared rather well: data taken from books, tourist information folders and embassy materials, all condensed into endless summaries. And with my pen friend, the first minor letter coming I documented many cultural highlights and scores of everyday life between the Taj Sophia and the Taj Mahal.</p>
+                    <h4>Association with NIA</h4>
+                    <p>In 1981 we moved to Leiden where I was offered a job at the then Instituut Kern (Leiden University). I remember Marianne Oort invited me, through her I became family member of NIA. The lively cultural meetings with Indian and Dutch members have always felt like a warm blanket, with delicious Indian food to spice us up. Indian entrepreneurs, academics, embassy staff, mixed marriage couples, people interested in India all shared the love for India, my second home country.</p>
+                    <p>Through NIA and the work at the Kern Institute, connections with the Indian embassy were close; as the manager of the Instituut's famous (art) historical photo collection between 1989 and 2013 I always prepared a welcome exhibition for new ambassadors to showcase our splendour whereas colleagues focused on early relations such as early encounters/commerce/trade, (Leiden) palm leaf manuscripts and inscriptions.</p>
+                `,
+        },
+        {
+          id: 4,
+          name: "Late Shri Pramod Sharma",
+          title: "Know Your NIA Member - Late Shri Pramod Sharma",
+          subtitle: "Former NIA Member",
+          image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=400",
+          content: "<h4>In Memoriam</h4><p>Content to be added remembering the contributions of Late Shri Pramod Sharma to the association.</p>",
+        },
+        {
+          id: 5,
+          name: "Marianne Oort",
+          title: "Know Your NIA Member - Marianne Oort",
+          subtitle: "Member",
+          image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=400",
+          content:
+            "<h4>Profile</h4><p>Marianne Oort has been a long-standing member of the NIA, contributing to various cultural activities and fostering Indo-Dutch relations.</p>",
+        },
+        {
+          id: 6,
+          name: "Mr. Badri Madan",
+          title: "Know Your NIA Member - Mr. Badri Madan",
+          subtitle: "Member",
+          image: "https://images.unsplash.com/photo-1566492031773-4f4e44671857?auto=format&fit=crop&q=80&w=400",
+          content:
+            "<h4>Profile</h4><p>Mr. Badri Madan is a prominent figure in the Indian diaspora community in the Netherlands and has actively supported NIA's initiatives.</p>",
+        },
+        {
+          id: 7,
+          name: "Prof. Gopi Menon",
+          title: "Know Your NIA Member - Prof. Gopi Menon",
+          subtitle: "Academic",
+          image: "https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&q=80&w=400",
+          content:
+            "<h4>Academic Contributions</h4><p>Prof. Menon has bridge the academic gap between Dutch and Indian institutions through various collaborative programs.</p>",
+        },
+        {
+          id: 8,
+          name: "Dr. Victor van Bijlert",
+          title: "Know Your NIA Member - Dr. Victor van Bijlert",
+          subtitle: "Current Secretary of NIA",
+          image: "https://images.unsplash.com/photo-1542909168-82c3e7fdca5c?auto=format&fit=crop&q=80&w=400",
+          content:
+            "<h4>Role in NIA</h4><p>Dr. Victor van Bijlert currently serves as the Secretary of the Executive Board, ensuring smooth operations and strategic direction for the association.</p>",
+        },
+      ];
+
+      // --- 2. RENDER GRID ---
+      const gridContainer = document.getElementById("article-grid-container");
+
+      gridContainer.innerHTML = articles
+        .map(
+          (article) => `
+            <div class="article-card">
+                <div class="card-header">
+                    <img src="${article.image}" alt="${article.name}" class="card-img">
+                </div>
+                <div class="card-body">
+                    <div>
+                        <span class="card-tag">NIA Member</span>
+                        <h3 class="card-title">${article.title}</h3>
+                    </div>
+                    <button class="btn btn-outline read-more-btn" data-id="${article.id}">Read Article</button>
+                </div>
+            </div>
+        `
+        )
+        .join("");
+
+      // --- 3. MODAL LOGIC ---
+      const modal = document.getElementById("article-modal");
+      const modalContent = document.getElementById("modal-content");
+      const closeModalBtn = document.getElementById("close-modal");
+
+      document.querySelectorAll(".read-more-btn").forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          const id = parseInt(e.target.dataset.id);
+          const data = articles.find((a) => a.id === id);
+          openModal(data);
+        });
+      });
+
+      function openModal(data) {
+        modalContent.innerHTML = `
+                <div class="article-hero">
+                    <img src="${data.image}" alt="${data.name}" class="article-author-img">
+                    <h2 class="article-main-title">${data.title}</h2>
+                    <span class="article-subtitle">${data.subtitle}</span>
+                </div>
+                
+                <div class="article-body">
+                    ${data.content}
+                </div>
+
+                <div class="article-quote">
+                    "NIA is a networking platform that brings together Dutch and Indian individuals."
+                </div>
+            `;
+
+        document.body.classList.add("modal-open");
+        modal.classList.add("active");
+      }
+
+      closeModalBtn.addEventListener("click", () => {
+        modal.classList.remove("active");
+        document.body.classList.remove("modal-open");
+      });
+
+      // --- ANNOUNCEMENT ---
+      if (localStorage.getItem("niaAnnouncementClosed") === "true") {
+        document.getElementById("announcement-bar").style.display = "none";
+      }
+      document.querySelector(".announcement-close").addEventListener("click", () => {
+        document.getElementById("announcement-bar").style.display = "none";
+        localStorage.setItem("niaAnnouncementClosed", "true");
+      });
+
+      // --- NAVBAR SCROLL ---
+      window.addEventListener("scroll", () => {
+        const navbar = document.getElementById("navbar");
+        if (window.scrollY > 50) navbar.classList.add("scrolled");
+        else navbar.classList.remove("scrolled");
+      });
+    </script>
+  </body>
+</html>

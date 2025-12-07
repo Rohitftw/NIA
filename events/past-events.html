@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Past Events - The Netherlands India Association</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <style>
+      /* --- 1. RESET & VARIABLES (Strict Black & White) --- */
+      :root {
+        --bg-body: #ffffff;
+        --bg-light-grey: #f9f9f9;
+        --bg-dark: #111111;
+        --text-main: #222222;
+        --text-light: #666666;
+        --border-light: #e0e0e0;
+        --border-dark: #000000;
+        --font-heading: "Montserrat", sans-serif;
+        --font-body: "Open Sans", sans-serif;
+        --spacing-section: 100px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: var(--font-body);
+        color: var(--text-main);
+        background-color: var(--bg-body);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+      body.modal-open {
+        overflow: hidden;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+        transition: all 0.3s ease;
+      }
+      ul {
+        list-style: none;
+      }
+      img {
+        display: block;
+        max-width: 100%;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-family: var(--font-heading);
+        color: #000;
+        font-weight: 600;
+        letter-spacing: -0.5px;
+      }
+      h2 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+      }
+      p {
+        color: var(--text-light);
+        font-weight: 300;
+        margin-bottom: 1.5rem;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 60px;
+      }
+
+      /* Buttons */
+      .btn {
+        display: inline-block;
+        padding: 12px 24px;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: 1px solid var(--border-dark);
+        white-space: nowrap;
+        text-align: center;
+      }
+      .btn-register {
+        background-color: #000;
+        color: #fff;
+        border-radius: 2px;
+      }
+      .btn-register:hover {
+        background-color: #333;
+      }
+      .btn-outline {
+        background: transparent;
+        color: #000;
+      }
+      .btn-outline:hover {
+        background: #000;
+        color: #fff;
+      }
+
+      /* --- NAVBAR & ANNOUNCEMENT (Global) --- */
+      #announcement-bar {
+        background-color: #f4f4f4;
+        color: #000;
+        text-align: center;
+        padding: 10px 40px;
+        font-size: 0.8rem;
+        font-weight: 500;
+        position: relative;
+        border-bottom: 1px solid #ddd;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .announcement-close {
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        font-size: 1rem;
+        cursor: pointer;
+        color: #555;
+        padding: 5px;
+      }
+      /* --- NAVBAR & DROPDOWNS --- */
+      #navbar {
+        position: sticky;
+        top: 0;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(5px);
+        padding: 15px 5%; /* Slightly reduced padding for better logo fit */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 1000;
+        border-bottom: 1px solid transparent;
+        transition: all 0.3s ease;
+      }
+
+      #navbar.scrolled {
+        border-bottom: 1px solid var(--border-light);
+        padding: 10px 5%; /* Slightly reduced padding on scroll */
+      }
+
+      /* --- NEW LOGO STYLES --- */
+      .nav-logo {
+        /* Removed font-weight, font-size, letter-spacing as they are for text */
+        display: flex;
+        align-items: center;
+      }
+
+      .nav-logo img {
+        /* Adjust this max-height to fit your logo size preferences */
+        max-height: 50px;
+        width: auto;
+        transition: all 0.3s ease;
+      }
+
+      /* Optional: Make logo slightly smaller on scroll */
+      #navbar.scrolled .nav-logo img {
+        max-height: 40px;
+      }
+      .nav-menu {
+        display: flex;
+        gap: 5px;
+        align-items: center;
+        height: 100%;
+      }
+      .nav-item {
+        position: relative;
+        height: 100%;
+        display: flex;
+        align-items: center;
+      }
+      .nav-link {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: #444;
+        padding: 0 15px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        height: 100%;
+        transition: color 0.3s;
+      }
+      .nav-link:hover {
+        color: #000;
+      }
+      .nav-link i {
+        font-size: 0.7rem;
+        color: #999;
+        margin-top: 2px;
+      }
+      .dropdown {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: #fff;
+        min-width: 220px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        border-top: 2px solid #000;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px);
+        transition: all 0.3s ease;
+        padding: 10px 0;
+        z-index: 1100;
+      }
+      .nav-item:hover .dropdown {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+      .dropdown li a {
+        display: block;
+        padding: 10px 20px;
+        font-size: 0.85rem;
+        color: #555;
+        transition: 0.2s;
+        border-bottom: 1px solid #f9f9f9;
+      }
+      .dropdown li:last-child a {
+        border-bottom: none;
+      }
+      .dropdown li a:hover {
+        background-color: #f5f5f5;
+        color: #000;
+        padding-left: 25px;
+      }
+      .nav-actions {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+      .lang-switch {
+        font-size: 0.8rem;
+        font-weight: 600;
+        display: flex;
+        gap: 5px;
+        cursor: pointer;
+        color: #888;
+      }
+      .lang-opt:hover {
+        color: #000;
+      }
+      .lang-opt.active {
+        color: #000;
+        text-decoration: underline;
+        text-underline-offset: 4px;
+      }
+
+      /* --- PAGE HERO --- */
+      .page-header {
+        position: relative;
+        height: 50vh;
+        background-color: #000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: #fff;
+        overflow: hidden;
+      }
+      .page-header-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("https://images.unsplash.com/photo-1533174072545-e8d4aa97edf9?auto=format&fit=crop&q=80&w=2000"); /* Past event memory */
+        background-size: cover;
+        background-position: center;
+        opacity: 0.5;
+        filter: grayscale(100%);
+      }
+      .header-content {
+        position: relative;
+        z-index: 10;
+        padding: 0 20px;
+      }
+      .header-title {
+        font-size: 3.5rem;
+        margin-bottom: 10px;
+      }
+      .header-breadcrumb {
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #ccc;
+      }
+
+      /* --- EVENTS GRID SECTION --- */
+      #events-list {
+        padding: 80px 0;
+        background-color: var(--bg-light-grey);
+      }
+      .events-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 40px;
+      }
+
+      .event-card {
+        background: #fff;
+        border: 1px solid var(--border-light);
+        transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+      }
+      .event-card:hover {
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
+        border-color: #000;
+        transform: translateY(-5px);
+      }
+      .event-thumb {
+        height: 200px;
+        width: 100%;
+        object-fit: cover;
+        filter: grayscale(100%);
+        transition: 0.3s;
+      }
+      .event-card:hover .event-thumb {
+        filter: grayscale(0%);
+      }
+      .event-card-content {
+        padding: 25px;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+      }
+      .event-date-badge {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        color: #888;
+        letter-spacing: 1px;
+        margin-bottom: 10px;
+        display: block;
+      }
+      .event-card-title {
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+        line-height: 1.3;
+      }
+      .event-card-loc {
+        font-size: 0.9rem;
+        color: #666;
+        margin-bottom: 25px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .event-card-footer {
+        margin-top: auto;
+      }
+
+      /* --- EVENT DETAIL MODAL (The "New Page" feel) --- */
+      .modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #fff;
+        z-index: 2000;
+        overflow-y: auto;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.4s ease;
+        transform: translateY(20px);
+      }
+      .modal.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+
+      .modal-content {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 60px 30px;
+        position: relative;
+      }
+      .close-modal {
+        position: absolute;
+        top: 30px;
+        right: 30px;
+        font-size: 2rem;
+        cursor: pointer;
+        color: #000;
+        transition: 0.3s;
+        z-index: 10;
+      }
+      .close-modal:hover {
+        transform: rotate(90deg);
+      }
+
+      .detail-header {
+        margin-bottom: 40px;
+        border-bottom: 1px solid var(--border-light);
+        padding-bottom: 30px;
+      }
+      .detail-title {
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+      }
+      .detail-meta {
+        font-size: 1.1rem;
+        color: #555;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        align-items: center;
+      }
+      .detail-meta i {
+        margin-right: 8px;
+        color: #000;
+      }
+
+      .detail-desc {
+        font-size: 1.05rem;
+        line-height: 1.8;
+        margin-bottom: 40px;
+        max-width: 800px;
+      }
+
+      /* Gallery Grid in Modal */
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+        margin-top: 40px;
+      }
+      .gallery-item {
+        height: 200px;
+        background-color: #f0f0f0;
+        background-size: cover;
+        background-position: center;
+        border: 1px solid #ddd;
+        filter: grayscale(100%);
+        transition: 0.3s;
+      }
+      .gallery-item:hover {
+        filter: grayscale(0%);
+        transform: scale(1.02);
+      }
+
+      /* Highlights */
+      .highlights-box {
+        background: var(--bg-light-grey);
+        padding: 40px;
+        margin-top: 60px;
+        border-left: 3px solid #000;
+      }
+      .highlights-title {
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+      }
+      .highlights-list {
+        list-style: disc;
+        padding-left: 20px;
+      }
+      .highlights-list li {
+        margin-bottom: 10px;
+        color: #555;
+      }
+
+      /* Responsive */
+      @media (max-width: 900px) {
+        .nav-menu {
+          display: none;
+        }
+        .container {
+          padding: 0 30px;
+        }
+        .events-grid {
+          grid-template-columns: 1fr;
+        }
+        .gallery-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="announcement-bar">
+      <span data-lang-key="announcement_text">Enhancing friendship and understanding between India and The Netherlands.</span>
+      <button class="announcement-close"><i class="fas fa-times"></i></button>
+    </div>
+
+    <nav id="navbar">
+      <a href="#" class="nav-logo">
+        <img src="assests/logo.webp" alt="NIA Logo" />
+      </a>
+
+      <ul class="nav-menu">
+        <li class="nav-item">
+          <a href="#home" class="nav-link" data-lang-key="nav_home">Home</a>
+        </li>
+        <li class="nav-item">
+          <span class="nav-link" data-lang-key="nav_about">About Us <i class="fas fa-chevron-down"></i></span>
+          <ul class="dropdown">
+            <li><a href="about/about.html" data-lang-key="nav_about_nia">About NIA</a></li>
+            <li><a href="about/executive-board.html" data-lang-key="nav_board">Executive Board</a></li>
+            <li><a href="about/what-we-do.html" data-lang-key="nav_what_we_do">What we do</a></li>
+            <li><a href="about/history.html" data-lang-key="nav_history_drop">History</a></li>
+            <li><a href="about/constitution.html" data-lang-key="nav_constitution">Constitution of NIA</a></li>
+            <li><a href="about/privacy-policy.html" data-lang-key="nav_privacy">Privacy Policy</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <span class="nav-link" data-lang-key="nav_events">Events <i class="fas fa-chevron-down"></i></span>
+          <ul class="dropdown">
+            <li><a href="events/upcoming-events.html" data-lang-key="nav_upcoming">Upcoming Events</a></li>
+            <li><a href="events/past-events.html" data-lang-key="nav_past">Past Events</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a href="membership.html" class="nav-link" data-lang-key="nav_membership">Membership</a>
+        </li>
+        <li class="nav-item">
+          <a href="articles.html" class="nav-link" data-lang-key="nav_articles">Articles</a>
+        </li>
+        <li class="nav-item">
+          <a href="gallery.html" class="nav-link" data-lang-key="nav_gallery">Gallery</a>
+        </li>
+        <li class="nav-item">
+          <a href="contact-us.html" class="nav-link" data-lang-key="nav_contact">Contact Us</a>
+        </li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="membership.html" class="btn btn-register" data-lang-key="btn_register">Register as a Member</a>
+
+        <div class="lang-switch">
+          <span class="lang-opt active" data-lang="en">EN</span>
+          <span style="color: #ddd">|</span>
+          <span class="lang-opt" data-lang="nl">NL</span>
+        </div>
+      </div>
+    </nav>
+
+    <header class="page-header">
+      <div class="page-header-bg"></div>
+      <div class="header-content">
+        <h1 class="header-title">Past Events</h1>
+        <span class="header-breadcrumb">Events / Archive</span>
+      </div>
+    </header>
+
+    <section id="events-list">
+      <div class="container">
+        <div class="events-grid" id="events-container"></div>
+      </div>
+    </section>
+
+    <div id="event-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-modal" id="close-modal-btn"><i class="fas fa-times"></i></span>
+
+        <div id="modal-body-content"></div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>NIA.</h4>
+          <p data-lang-key="foot_about">
+            The Netherlands India Association is a networking organization for Dutch and Indian management, research, and culture.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4 data-lang-key="foot_links">Quick Links</h4>
+          <ul>
+            <li><a href="about/about.html" data-lang-key="nav_about">About Us</a></li>
+            <li><a href="#objectives" data-lang-key="nav_objectives">Objectives</a></li>
+            <li><a href="about/history.html" data-lang-key="nav_history">History</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 data-lang-key="foot_contact">Address</h4>
+          <p>The Hague, 2500 GK<br />The Netherlands</p>
+          <p>info@niaonline.org</p>
+        </div>
+        <div class="footer-col">
+          <h4 data-lang-key="foot_follow">Follow Us</h4>
+          <div class="socials">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2023 Netherlands India Association. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      // --- 1. SAMPLE PAST EVENT DATA ---
+      const pastEvents = [
+        {
+          id: 1,
+          title: "Keukenhof Visit 2023",
+          dateFormatted: "APRIL 15, 2023",
+          location: "Lisse, Netherlands",
+          image: "https://images.unsplash.com/photo-1586944640424-6ef267675276?auto=format&fit=crop&q=80&w=1000",
+          description:
+            "Our annual spring outing to the beautiful Keukenhof gardens. Members enjoyed a guided tour of the tulips, followed by a networking lunch at the pavilion. It was a wonderful day of color, nature, and community connection.",
+          highlights: ["Guided Tulip Tour", "Group Lunch", "Photography Session"],
+          gallery: [
+            "https://images.unsplash.com/photo-1462275646964-a0e338679cde?auto=format&fit=crop&q=80",
+            "https://images.unsplash.com/photo-1520052205864-92d242b3a76b?auto=format&fit=crop&q=80",
+            "https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&q=80",
+          ],
+        },
+        {
+          id: 2,
+          title: "Indian Independence Day 2022",
+          dateFormatted: "AUGUST 15, 2022",
+          location: "Wassenaar",
+          image: "https://images.unsplash.com/photo-1532375810709-75b1da00537c?auto=format&fit=crop&q=80&w=1000",
+          description:
+            "A grand celebration of India's 75th Independence Day. The event featured flag hoisting, cultural performances by local Indian artists, and a keynote speech by the Ambassador. A traditional Indian lunch was served to all attendees.",
+          highlights: ["Flag Hoisting Ceremony", "Cultural Dance Performances", "Keynote Speech", "Traditional Lunch"],
+          gallery: [
+            "https://images.unsplash.com/photo-1563428383804-633b49982703?auto=format&fit=crop&q=80",
+            "https://images.unsplash.com/photo-1590578832599-234b398df90b?auto=format&fit=crop&q=80",
+            "https://images.unsplash.com/photo-1605367808269-80a9d45869a1?auto=format&fit=crop&q=80",
+          ],
+        },
+        {
+          id: 3,
+          title: "Christmas Gala Dinner 2022",
+          dateFormatted: "DECEMBER 18, 2022",
+          location: "Amsterdam",
+          image: "https://images.unsplash.com/photo-1576669801775-ffdeb440e190?auto=format&fit=crop&q=80&w=1000",
+          description:
+            "Our annual year-end gathering brought together Dutch and Indian members for a festive evening. The night included a formal dinner, a charity auction, and music. It was a perfect way to close the year with warmth and friendship.",
+          highlights: ["Formal Dinner", "Charity Auction", "Live Jazz Band"],
+          gallery: [
+            "https://images.unsplash.com/photo-1513297887119-d46091b24bfa?auto=format&fit=crop&q=80",
+            "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&q=80",
+            "https://images.unsplash.com/photo-1527529482837-4698179dc6ce?auto=format&fit=crop&q=80",
+          ],
+        },
+        {
+          id: 4,
+          title: "Academic Symposium: Trade Relations",
+          dateFormatted: "JUNE 10, 2022",
+          location: "The Hague",
+          image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&q=80&w=1000",
+          description:
+            "A specialized seminar focusing on the evolving trade dynamics between India and the EU. Experts from both regions discussed sustainability, technology transfer, and future economic partnerships.",
+          highlights: ["Panel Discussion", "Q&A Session", "Networking Drinks"],
+          gallery: [
+            "https://images.unsplash.com/photo-1544531586-fde5298cdd40?auto=format&fit=crop&q=80",
+            "https://images.unsplash.com/photo-1558403194-611308249627?auto=format&fit=crop&q=80",
+            "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80",
+          ],
+        },
+      ];
+
+      // --- 2. RENDER GRID ---
+      const container = document.getElementById("events-container");
+
+      container.innerHTML = pastEvents
+        .map(
+          (event) => `
+            <div class="event-card">
+                <img src="${event.image}" alt="${event.title}" class="event-thumb">
+                <div class="event-card-content">
+                    <span class="event-date-badge">${event.dateFormatted}</span>
+                    <h3 class="event-card-title">${event.title}</h3>
+                    <div class="event-card-loc"><i class="fas fa-map-marker-alt"></i> ${event.location}</div>
+                    <div class="event-card-footer">
+                        <button class="btn btn-outline view-btn" style="width:100%;" data-id="${event.id}">View Details</button>
+                    </div>
+                </div>
+            </div>
+        `
+        )
+        .join("");
+
+      // --- 3. MODAL LOGIC ---
+      const modal = document.getElementById("event-modal");
+      const modalBody = document.getElementById("modal-body-content");
+      const closeBtn = document.getElementById("close-modal-btn");
+
+      document.querySelectorAll(".view-btn").forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          const id = parseInt(e.target.dataset.id);
+          const event = pastEvents.find((ev) => ev.id === id);
+          openModal(event);
+        });
+      });
+
+      function openModal(event) {
+        const galleryHTML = event.gallery
+          .map(
+            (imgUrl) => `
+                <div class="gallery-item" style="background-image: url('${imgUrl}');"></div>
+            `
+          )
+          .join("");
+
+        const highlightsHTML = event.highlights.map((h) => `<li>${h}</li>`).join("");
+
+        modalBody.innerHTML = `
+                <div class="detail-header">
+                    <h2 class="detail-title">${event.title}</h2>
+                    <div class="detail-meta">
+                        <span><i class="far fa-calendar-alt"></i> ${event.dateFormatted}</span>
+                        <span><i class="fas fa-map-marker-alt"></i> ${event.location}</span>
+                    </div>
+                </div>
+                
+                <img src="${event.image}" style="width:100%; height: 400px; object-fit:cover; margin-bottom: 40px; filter: grayscale(20%);" alt="Main Event Image">
+                
+                <div class="detail-desc">
+                    <h3 style="margin-bottom:20px;">Event Overview</h3>
+                    <p>${event.description}</p>
+                </div>
+
+                <div class="highlights-box">
+                    <h4 class="highlights-title">Event Highlights</h4>
+                    <ul class="highlights-list">
+                        ${highlightsHTML}
+                    </ul>
+                </div>
+
+                <h3 style="margin-top:60px; margin-bottom:20px;">Event Gallery</h3>
+                <div class="gallery-grid">
+                    ${galleryHTML}
+                </div>
+            `;
+
+        document.body.classList.add("modal-open");
+        modal.classList.add("active");
+      }
+
+      closeBtn.addEventListener("click", () => {
+        modal.classList.remove("active");
+        document.body.classList.remove("modal-open");
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Executive Board - The Netherlands India Association</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <style>
+      /* --- 1. RESET & VARIABLES (Strict Black & White) --- */
+      :root {
+        --bg-body: #ffffff;
+        --bg-light-grey: #f9f9f9;
+        --bg-dark: #111111;
+        --text-main: #222222;
+        --text-light: #666666;
+        --border-light: #e0e0e0;
+        --border-dark: #000000;
+        --font-heading: "Montserrat", sans-serif;
+        --font-body: "Open Sans", sans-serif;
+        --spacing-section: 100px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: var(--font-body);
+        color: var(--text-main);
+        background-color: var(--bg-body);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+        transition: all 0.3s ease;
+      }
+      ul {
+        list-style: none;
+      }
+      img {
+        display: block;
+        max-width: 100%;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5 {
+        font-family: var(--font-heading);
+        color: #000;
+        font-weight: 600;
+        letter-spacing: -0.5px;
+      }
+      h2 {
+        font-size: 2.2rem;
+        margin-bottom: 1rem;
+      }
+      p {
+        color: var(--text-light);
+        font-weight: 300;
+        margin-bottom: 1.5rem;
+      }
+
+      /* Container */
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 60px;
+      }
+
+      /* Buttons */
+      .btn {
+        display: inline-block;
+        padding: 12px 24px;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: 1px solid var(--border-dark);
+        white-space: nowrap;
+      }
+      .btn-register {
+        background-color: #000;
+        color: #fff;
+        border-radius: 2px;
+      }
+      .btn-register:hover {
+        background-color: #333;
+      }
+
+      /* --- NAVBAR (Same as Global) --- */
+      /* --- NAVBAR & DROPDOWNS --- */
+      #navbar {
+        position: sticky;
+        top: 0;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(5px);
+        padding: 15px 5%; /* Slightly reduced padding for better logo fit */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 1000;
+        border-bottom: 1px solid transparent;
+        transition: all 0.3s ease;
+      }
+
+      #navbar.scrolled {
+        border-bottom: 1px solid var(--border-light);
+        padding: 10px 5%; /* Slightly reduced padding on scroll */
+      }
+
+      /* --- NEW LOGO STYLES --- */
+      .nav-logo {
+        /* Removed font-weight, font-size, letter-spacing as they are for text */
+        display: flex;
+        align-items: center;
+      }
+
+      .nav-logo img {
+        /* Adjust this max-height to fit your logo size preferences */
+        max-height: 50px;
+        width: auto;
+        transition: all 0.3s ease;
+      }
+
+      /* Optional: Make logo slightly smaller on scroll */
+      #navbar.scrolled .nav-logo img {
+        max-height: 40px;
+      }
+      .nav-menu {
+        display: flex;
+        gap: 5px;
+        align-items: center;
+        height: 100%;
+      }
+      .nav-item {
+        position: relative;
+        height: 100%;
+        display: flex;
+        align-items: center;
+      }
+      .nav-link {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: #444;
+        padding: 0 15px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        height: 100%;
+        transition: color 0.3s;
+      }
+      .nav-link:hover {
+        color: #000;
+      }
+      .nav-link i {
+        font-size: 0.7rem;
+        color: #999;
+        margin-top: 2px;
+      }
+      /* Dropdown */
+      .dropdown {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: #fff;
+        min-width: 220px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        border-top: 2px solid #000;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px);
+        transition: all 0.3s ease;
+        padding: 10px 0;
+        z-index: 1100;
+      }
+      .nav-item:hover .dropdown {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+      .dropdown li a {
+        display: block;
+        padding: 10px 20px;
+        font-size: 0.85rem;
+        color: #555;
+        transition: 0.2s;
+        border-bottom: 1px solid #f9f9f9;
+      }
+      .dropdown li:last-child a {
+        border-bottom: none;
+      }
+      .dropdown li a:hover {
+        background-color: #f5f5f5;
+        color: #000;
+        padding-left: 25px;
+      }
+      .nav-actions {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+      .lang-switch {
+        font-size: 0.8rem;
+        font-weight: 600;
+        display: flex;
+        gap: 5px;
+        cursor: pointer;
+        color: #888;
+      }
+      .lang-opt:hover {
+        color: #000;
+      }
+      .lang-opt.active {
+        color: #000;
+        text-decoration: underline;
+        text-underline-offset: 4px;
+      }
+
+      /* --- PAGE HEADER --- */
+      .page-header {
+        position: relative;
+        height: 50vh;
+        background-color: #000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: #fff;
+        overflow: hidden;
+      }
+      .page-header-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&q=80&w=2000"); /* India Gate / Official Building */
+        background-size: cover;
+        background-position: center;
+        opacity: 0.5;
+        filter: grayscale(100%);
+      }
+      .header-content {
+        position: relative;
+        z-index: 10;
+        padding: 0 20px;
+      }
+      .header-title {
+        font-size: 3rem;
+        margin-bottom: 10px;
+      }
+      .header-breadcrumb {
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #ccc;
+      }
+
+      /* --- BOARD INTRO --- */
+      #board-intro {
+        padding: 60px 0 40px;
+        text-align: left;
+      }
+      .intro-text h3 {
+        font-size: 1.5rem;
+        color: #000;
+        margin-bottom: 20px;
+      }
+      .intro-text p {
+        font-size: 0.95rem;
+        max-width: 900px;
+      }
+
+      /* --- BOARD GRID --- */
+      .board-section {
+        padding-bottom: 80px;
+      }
+      .board-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        margin-top: 40px;
+      }
+
+      /* Board Member Card */
+      .member-card {
+        border: 1px solid var(--border-light);
+        background: #fff;
+        padding: 30px 20px;
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .member-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        border-color: #000;
+      }
+
+      .member-avatar {
+        width: 120px;
+        height: 120px;
+        background-color: #f0f0f0; /* Light Grey placeholder */
+        border-radius: 50%;
+        margin: 0 auto 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+      /* Generic Avatar Icon */
+      .member-avatar i {
+        font-size: 3rem;
+        color: #ccc;
+      }
+
+      /* If using real images later, replace <i> with <img> inside .member-avatar */
+
+      .member-name {
+        font-size: 1.1rem;
+        font-weight: 700;
+        margin-bottom: 5px;
+        color: #000;
+      }
+      .member-role-sub {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        color: #888;
+        letter-spacing: 1px;
+        margin-bottom: 10px;
+        display: block;
+      }
+      .member-title {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: #000;
+        border-top: 1px solid #eee;
+        padding-top: 10px;
+        display: inline-block;
+        width: 100%;
+      }
+
+      /* --- ADVISORY COUNCIL --- */
+      #advisory {
+        padding: 60px 0 100px;
+        background-color: var(--bg-light-grey);
+        border-top: 1px solid var(--border-light);
+      }
+
+      /* --- SPONSORS --- */
+      #sponsors {
+        padding: 60px 0;
+        text-align: center;
+        border-top: 1px solid var(--border-light);
+        background: #fff;
+        overflow: hidden;
+      }
+      .sponsor-carousel-container {
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+        margin-top: 40px;
+        white-space: nowrap;
+      }
+      .sponsor-carousel-container::before,
+      .sponsor-carousel-container::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        width: 100px;
+        height: 100%;
+        z-index: 2;
+        pointer-events: none;
+      }
+      .sponsor-carousel-container::before {
+        left: 0;
+        background: linear-gradient(to right, #fff, transparent);
+      }
+      .sponsor-carousel-container::after {
+        right: 0;
+        background: linear-gradient(to left, #fff, transparent);
+      }
+      .sponsor-track {
+        display: inline-block;
+        animation: scroll 30s linear infinite;
+      }
+      .sponsor-track:hover {
+        animation-play-state: paused;
+      }
+      .sponsor-logo {
+        height: 50px;
+        width: auto;
+        margin: 0 40px;
+        display: inline-block;
+        vertical-align: middle;
+        filter: grayscale(100%);
+        opacity: 0.6;
+        transition: all 0.3s ease;
+      }
+      .sponsor-logo:hover {
+        filter: grayscale(0%);
+        opacity: 1;
+        transform: scale(1.05);
+      }
+      @keyframes scroll {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+
+      /* --- FOOTER --- */
+      footer {
+        background-color: #000;
+        color: #fff;
+        padding: 80px 20px 20px;
+        font-size: 0.9rem;
+      }
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: 40px;
+        max-width: 1100px;
+        margin: 0 auto 60px;
+      }
+      .footer-col h4 {
+        color: #fff;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+      }
+      .footer-col p,
+      .footer-col a {
+        color: #888;
+      }
+      .footer-col a:hover {
+        color: #fff;
+      }
+      .footer-col ul li {
+        margin-bottom: 10px;
+      }
+      .footer-bottom {
+        border-top: 1px solid #222;
+        padding-top: 20px;
+        text-align: center;
+        color: #444;
+        font-size: 0.8rem;
+      }
+      .socials a {
+        margin-right: 15px;
+        font-size: 1.2rem;
+      }
+
+      @media (max-width: 768px) {
+        .nav-menu {
+          display: none;
+        }
+        .container {
+          padding: 0 30px;
+        }
+        .board-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="announcement-bar">
+      <span data-lang-key="announcement_text">Enhancing friendship and understanding between India and The Netherlands.</span>
+      <button class="announcement-close" aria-label="Close announcement">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+
+    <nav id="navbar">
+      <a href="#" class="nav-logo">
+        <img src="assests/logo.webp" alt="NIA Logo" />
+      </a>
+
+      <ul class="nav-menu">
+        <li class="nav-item">
+          <a href="#home" class="nav-link" data-lang-key="nav_home">Home</a>
+        </li>
+        <li class="nav-item">
+          <span class="nav-link" data-lang-key="nav_about">About Us <i class="fas fa-chevron-down"></i></span>
+          <ul class="dropdown">
+            <li><a href="about/about.html" data-lang-key="nav_about_nia">About NIA</a></li>
+            <li><a href="about/executive-board.html" data-lang-key="nav_board">Executive Board</a></li>
+            <li><a href="about/what-we-do.html" data-lang-key="nav_what_we_do">What we do</a></li>
+            <li><a href="about/history.html" data-lang-key="nav_history_drop">History</a></li>
+            <li><a href="about/constitution.html" data-lang-key="nav_constitution">Constitution of NIA</a></li>
+            <li><a href="about/privacy-policy.html" data-lang-key="nav_privacy">Privacy Policy</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <span class="nav-link" data-lang-key="nav_events">Events <i class="fas fa-chevron-down"></i></span>
+          <ul class="dropdown">
+            <li><a href="events/upcoming-events.html" data-lang-key="nav_upcoming">Upcoming Events</a></li>
+            <li><a href="events/past-events.html" data-lang-key="nav_past">Past Events</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a href="membership.html" class="nav-link" data-lang-key="nav_membership">Membership</a>
+        </li>
+        <li class="nav-item">
+          <a href="articles.html" class="nav-link" data-lang-key="nav_articles">Articles</a>
+        </li>
+        <li class="nav-item">
+          <a href="gallery.html" class="nav-link" data-lang-key="nav_gallery">Gallery</a>
+        </li>
+        <li class="nav-item">
+          <a href="contact-us.html" class="nav-link" data-lang-key="nav_contact">Contact Us</a>
+        </li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="membership.html" class="btn btn-register" data-lang-key="btn_register">Register as a Member</a>
+
+        <div class="lang-switch">
+          <span class="lang-opt active" data-lang="en">EN</span>
+          <span style="color: #ddd">|</span>
+          <span class="lang-opt" data-lang="nl">NL</span>
+        </div>
+      </div>
+    </nav>
+
+    <header class="page-header">
+      <div class="page-header-bg"></div>
+      <div class="header-content">
+        <h1 class="header-title" data-lang-key="board_title">Executive Board</h1>
+        <span class="header-breadcrumb">About Us / Executive Board</span>
+      </div>
+    </header>
+
+    <section id="board-intro" class="container">
+      <div class="intro-text">
+        <h3 data-lang-key="board_intro_title">The aims and objectives of the Association are:</h3>
+        <p data-lang-key="board_intro_text">
+          Elections for the new Executive Board for the term 2024-2026 was held on May 22, 2024 where 9 Board members were elected. The office bearers
+          were elected in an Executive Board meeting on May 22, 2024. The names and functions of members are:
+        </p>
+      </div>
+
+      <div class="board-grid">
+        <div class="member-card">
+          <div class="member-avatar"><i class="fas fa-user"></i></div>
+          <h4 class="member-name">Mr. Dev Pal Singh</h4>
+          <span class="member-role-sub" data-lang-key="role_exec">Executive Board Member</span>
+          <span class="member-title" data-lang-key="title_pres">President</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><i class="fas fa-user"></i></div>
+          <h4 class="member-name">Ms. Shanti Paniadsingh</h4>
+          <span class="member-role-sub" data-lang-key="role_exec">Executive Board Member</span>
+          <span class="member-title" data-lang-key="title_vp">Vice President</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><i class="fas fa-user"></i></div>
+          <h4 class="member-name">Mr. Pavan Sharma</h4>
+          <span class="member-role-sub" data-lang-key="role_exec">Executive Board Member</span>
+          <span class="member-title" data-lang-key="title_treas">Treasurer</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><i class="fas fa-user"></i></div>
+          <h4 class="member-name">Dr. Victor van Bijlert</h4>
+          <span class="member-role-sub" data-lang-key="role_exec">Executive Board Member</span>
+          <span class="member-title" data-lang-key="title_sec">Secretary</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><i class="fas fa-user"></i></div>
+          <h4 class="member-name">Mr. Ferry van Nieuwenhoven</h4>
+          <span class="member-role-sub" data-lang-key="role_exec">Board Member</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><i class="fas fa-user"></i></div>
+          <h4 class="member-name">Ms. Krithika Banu Rao</h4>
+          <span class="member-role-sub" data-lang-key="role_exec">Board Member</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><i class="fas fa-user"></i></div>
+          <h4 class="member-name">Mr. Shivam Joshi</h4>
+          <span class="member-role-sub" data-lang-key="role_exec">Board Member</span>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar"><i class="fas fa-user"></i></div>
+          <h4 class="member-name">Mr. Jayadev Sukumaran</h4>
+          <span class="member-role-sub" data-lang-key="role_exec">Board Member</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="advisory">
+      <div class="container">
+        <h3 style="margin-bottom: 20px" data-lang-key="adv_title">Advisory Council</h3>
+        <p data-lang-key="adv_text">
+          Due to the amendments made in the constitution of NIA, it was decided by AGM to appoint senior and experienced loyal members to an advisory
+          council. The Executive Board then approved the names and the institution of such a council in the board meeting on May 22, 2024.
+        </p>
+
+        <div class="board-grid">
+          <div class="member-card">
+            <div class="member-avatar"><i class="fas fa-user"></i></div>
+            <h4 class="member-name">Mr. Vinod Sahdev</h4>
+          </div>
+          <div class="member-card">
+            <div class="member-avatar"><i class="fas fa-user"></i></div>
+            <h4 class="member-name">Drs. Mrs. Marianne Oort</h4>
+          </div>
+          <div class="member-card">
+            <div class="member-avatar"><i class="fas fa-user"></i></div>
+            <h4 class="member-name">Drs. Ram Lakhina</h4>
+          </div>
+          <div class="member-card">
+            <div class="member-avatar"><i class="fas fa-user"></i></div>
+            <h4 class="member-name">Drs. Badri Madan</h4>
+          </div>
+          <div class="member-card">
+            <div class="member-avatar"><i class="fas fa-user"></i></div>
+            <h4 class="member-name">Dr. Dirk Kolff</h4>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sponsors">
+      <div class="container">
+        <span class="subtitle" style="text-align: center; display: block" data-lang-key="spon_title">Sponsors</span>
+        <div class="sponsor-carousel-container">
+          <div class="sponsor-track">
+            <img src="https://placehold.co/150x60/eeeeee/999999?text=AdevIT" alt="Sponsor" class="sponsor-logo" />
+            <img src="https://placehold.co/150x60/eeeeee/999999?text=HouseOfSpice" alt="Sponsor" class="sponsor-logo" />
+            <img src="https://placehold.co/150x60/eeeeee/999999?text=Nitya" alt="Sponsor" class="sponsor-logo" />
+            <img src="https://placehold.co/150x60/eeeeee/999999?text=Partner1" alt="Sponsor" class="sponsor-logo" />
+            <img src="https://placehold.co/150x60/eeeeee/999999?text=Partner2" alt="Sponsor" class="sponsor-logo" />
+            <img src="https://placehold.co/150x60/eeeeee/999999?text=AdevIT" alt="Sponsor" class="sponsor-logo" />
+            <img src="https://placehold.co/150x60/eeeeee/999999?text=HouseOfSpice" alt="Sponsor" class="sponsor-logo" />
+            <img src="https://placehold.co/150x60/eeeeee/999999?text=Nitya" alt="Sponsor" class="sponsor-logo" />
+            <img src="https://placehold.co/150x60/eeeeee/999999?text=Partner1" alt="Sponsor" class="sponsor-logo" />
+            <img src="https://placehold.co/150x60/eeeeee/999999?text=Partner2" alt="Sponsor" class="sponsor-logo" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>NIA.</h4>
+          <p data-lang-key="foot_about">
+            The Netherlands India Association is a networking organization for Dutch and Indian management, research, and culture.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4 data-lang-key="foot_links">Quick Links</h4>
+          <ul>
+            <li><a href="about/about.html" data-lang-key="nav_about">About Us</a></li>
+            <li><a href="#objectives" data-lang-key="nav_objectives">Objectives</a></li>
+            <li><a href="about/history.html" data-lang-key="nav_history">History</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 data-lang-key="foot_contact">Address</h4>
+          <p>The Hague, 2500 GK<br />The Netherlands</p>
+          <p>info@niaonline.org</p>
+        </div>
+        <div class="footer-col">
+          <h4 data-lang-key="foot_follow">Follow Us</h4>
+          <div class="socials">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2023 Netherlands India Association. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      // --- TRANSLATIONS ---
+      const translations = {
+        en: {
+          announcement_text: "Enhancing friendship and understanding between India and The Netherlands.",
+
+          // Nav
+          nav_home: "Home",
+          nav_about: "About Us",
+          nav_about_nia: "About NIA",
+          nav_board: "Executive Board",
+          nav_what_we_do: "What we do",
+          nav_history_drop: "History",
+          nav_constitution: "Constitution of NIA",
+          nav_privacy: "Privacy Policy",
+          nav_events: "Events",
+          nav_upcoming: "Upcoming Events",
+          nav_past: "Past Events",
+          nav_membership: "Membership",
+          nav_articles: "Articles",
+          nav_gallery: "Gallery",
+          nav_contact: "Contact Us",
+          btn_register: "Register as a Member",
+
+          // Header
+          board_title: "Executive Board",
+
+          // Intro
+          board_intro_title: "The aims and objectives of the Association are:",
+          board_intro_text:
+            "Elections for the new Executive Board for the term 2024-2026 was held on May 22, 2024 where 9 Board members were elected. The office bearers were elected in an Executive Board meeting on May 22, 2024. The names and functions of members are:",
+
+          // Roles
+          role_exec: "Executive Board Member",
+          title_pres: "President",
+          title_vp: "Vice President",
+          title_treas: "Treasurer",
+          title_sec: "Secretary",
+
+          // Advisory
+          adv_title: "Advisory Council",
+          adv_text:
+            "Due to the amendments made in the constitution of NIA, it was decided by AGM to appoint senior and experienced loyal members to an advisory council. The Executive Board then approved the names and the institution of such a council in the board meeting on May 22, 2024.",
+
+          spon_title: "Sponsors",
+          foot_about: "The Netherlands India Association is a networking organization for Dutch and Indian management, research, and culture.",
+          foot_links: "Quick Links",
+          foot_contact: "Address",
+          foot_follow: "Follow Us",
+        },
+        nl: {
+          announcement_text: "Het versterken van vriendschap en begrip tussen India en Nederland.",
+
+          nav_home: "Home",
+          nav_about: "Over Ons",
+          nav_about_nia: "Over NIA",
+          nav_board: "Bestuur",
+          nav_what_we_do: "Wat we doen",
+          nav_history_drop: "Geschiedenis",
+          nav_constitution: "Statuten van NIA",
+          nav_privacy: "Privacybeleid",
+          nav_events: "Evenementen",
+          nav_upcoming: "Aankomende Evenementen",
+          nav_past: "Vorige Evenementen",
+          nav_membership: "Lidmaatschap",
+          nav_articles: "Artikelen",
+          nav_gallery: "Galerij",
+          nav_contact: "Contact",
+          btn_register: "Registreer als Lid",
+
+          board_title: "Uitvoerend Bestuur",
+
+          board_intro_title: "De doelstellingen van de Vereniging zijn:",
+          board_intro_text:
+            "Verkiezingen voor het nieuwe Uitvoerend Bestuur voor de periode 2024-2026 vonden plaats op 22 mei 2024, waarbij 9 bestuursleden werden gekozen. De functionarissen werden gekozen in een bestuursvergadering op 22 mei 2024. De namen en functies van de leden zijn:",
+
+          role_exec: "Lid Uitvoerend Bestuur",
+          title_pres: "Voorzitter",
+          title_vp: "Vice-voorzitter",
+          title_treas: "Penningmeester",
+          title_sec: "Secretaris",
+
+          adv_title: "Adviesraad",
+          adv_text:
+            "Vanwege de wijzigingen in de statuten van NIA is door de ALV besloten om senior en ervaren loyale leden te benoemen in een adviesraad. Het Uitvoerend Bestuur heeft vervolgens de namen en de instelling van een dergelijke raad goedgekeurd in de bestuursvergadering op 22 mei 2024.",
+
+          spon_title: "Sponsors",
+          foot_about: "De Netherlands India Association is een netwerkorganisatie voor Nederlands en Indiaas management, onderzoek en cultuur.",
+          foot_links: "Snelle Links",
+          foot_contact: "Adres",
+          foot_follow: "Volg Ons",
+        },
+      };
+
+      // --- LANGUAGE SWITCHER LOGIC ---
+      const langOpts = document.querySelectorAll(".lang-opt");
+
+      function setLanguage(lang) {
+        localStorage.setItem("niaLanguage", lang);
+        document.querySelectorAll("[data-lang-key]").forEach((el) => {
+          const key = el.getAttribute("data-lang-key");
+          if (translations[lang][key]) el.innerText = translations[lang][key];
+        });
+        langOpts.forEach((opt) => {
+          if (opt.dataset.lang === lang) opt.classList.add("active");
+          else opt.classList.remove("active");
+        });
+      }
+
+      langOpts.forEach((opt) => opt.addEventListener("click", () => setLanguage(opt.dataset.lang)));
+      setLanguage(localStorage.getItem("niaLanguage") || "en");
+
+      // --- ANNOUNCEMENT ---
+      if (localStorage.getItem("niaAnnouncementClosed") === "true") {
+        document.getElementById("announcement-bar").style.display = "none";
+      }
+      document.querySelector(".announcement-close").addEventListener("click", () => {
+        document.getElementById("announcement-bar").style.display = "none";
+        localStorage.setItem("niaAnnouncementClosed", "true");
+      });
+
+      // --- NAVBAR SCROLL ---
+      window.addEventListener("scroll", () => {
+        const navbar = document.getElementById("navbar");
+        if (window.scrollY > 50) navbar.classList.add("scrolled");
+        else navbar.classList.remove("scrolled");
+      });
+    </script>
+  </body>
+</html>
