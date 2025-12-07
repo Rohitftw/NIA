@@ -448,8 +448,8 @@
         margin: 0 40px;
         display: inline-block;
         vertical-align: middle;
-        filter: grayscale(100%);
-        opacity: 0.6;
+        /* filter: grayscale(100%);
+        opacity: 0.6; */
         transition: all 0.3s ease;
       }
       .sponsor-logo:hover {
@@ -533,53 +533,43 @@
     </div>
 
     <nav id="navbar">
-      <a href="#" class="nav-logo">
-        <img src="assests/logo.webp" alt="NIA Logo" />
+      <a href="../index.html" class="nav-logo">
+        <img src="../assests/logo.webp" alt="NIA Logo" />
       </a>
 
       <ul class="nav-menu">
+        <li class="nav-item"><a href="../index.html" class="nav-link" data-lang-key="nav_home">Home</a></li>
+
         <li class="nav-item">
-          <a href="#home" class="nav-link" data-lang-key="nav_home">Home</a>
-        </li>
-        <li class="nav-item">
-          <span class="nav-link" data-lang-key="nav_about">About Us <i class="fas fa-chevron-down"></i></span>
+          <span class="nav-link" style="color: #000" data-lang-key="nav_about">About Us <i class="fas fa-chevron-down"></i></span>
           <ul class="dropdown">
-            <li><a href="about/about.html" data-lang-key="nav_about_nia">About NIA</a></li>
-            <li><a href="about/executive-board.html" data-lang-key="nav_board">Executive Board</a></li>
-            <li><a href="about/what-we-do.html" data-lang-key="nav_what_we_do">What we do</a></li>
-            <li><a href="about/history.html" data-lang-key="nav_history_drop">History</a></li>
-            <li><a href="about/constitution.html" data-lang-key="nav_constitution">Constitution of NIA</a></li>
-            <li><a href="about/privacy-policy.html" data-lang-key="nav_privacy">Privacy Policy</a></li>
+            <li><a href="about.html" data-lang-key="nav_about_nia">About NIA</a></li>
+            <li><a href="executive-board.html" data-lang-key="nav_board">Executive Board</a></li>
+            <li><a href="what-we-do.html" data-lang-key="nav_what_we_do">What we do</a></li>
+            <li><a href="history.html" data-lang-key="nav_history_drop">History</a></li>
+            <li><a href="constitution.html" data-lang-key="nav_constitution">Constitution of NIA</a></li>
+            <li><a href="privacy-policy.html" data-lang-key="nav_privacy">Privacy Policy</a></li>
           </ul>
         </li>
+
         <li class="nav-item">
           <span class="nav-link" data-lang-key="nav_events">Events <i class="fas fa-chevron-down"></i></span>
           <ul class="dropdown">
-            <li><a href="events/upcoming-events.html" data-lang-key="nav_upcoming">Upcoming Events</a></li>
-            <li><a href="events/past-events.html" data-lang-key="nav_past">Past Events</a></li>
+            <li><a href="../events/upcoming-events.html" data-lang-key="nav_upcoming">Upcoming Events</a></li>
+            <li><a href="../events/past-events.html" data-lang-key="nav_past">Past Events</a></li>
           </ul>
         </li>
-        <li class="nav-item">
-          <a href="membership.html" class="nav-link" data-lang-key="nav_membership">Membership</a>
-        </li>
-        <li class="nav-item">
-          <a href="articles.html" class="nav-link" data-lang-key="nav_articles">Articles</a>
-        </li>
-        <li class="nav-item">
-          <a href="gallery.html" class="nav-link" data-lang-key="nav_gallery">Gallery</a>
-        </li>
-        <li class="nav-item">
-          <a href="contact-us.html" class="nav-link" data-lang-key="nav_contact">Contact Us</a>
-        </li>
+
+        <li class="nav-item"><a href="../membership.html" class="nav-link" data-lang-key="nav_membership">Membership</a></li>
+        <li class="nav-item"><a href="../articles.html" class="nav-link" data-lang-key="nav_articles">Articles</a></li>
+        <li class="nav-item"><a href="../gallery.html" class="nav-link" data-lang-key="nav_gallery">Gallery</a></li>
+        <li class="nav-item"><a href="../contact-us.html" class="nav-link" data-lang-key="nav_contact">Contact Us</a></li>
       </ul>
 
       <div class="nav-actions">
-        <a href="membership.html" class="btn btn-register" data-lang-key="btn_register">Register as a Member</a>
-
+        <a href="../membership.html" class="btn btn-register" data-lang-key="btn_register">Register as a Member</a>
         <div class="lang-switch">
-          <span class="lang-opt active" data-lang="en">EN</span>
-          <span style="color: #ddd">|</span>
-          <span class="lang-opt" data-lang="nl">NL</span>
+          <span class="lang-opt active" data-lang="en">EN</span><span style="color: #ddd">|</span><span class="lang-opt" data-lang="nl">NL</span>
         </div>
       </div>
     </nav>
@@ -668,16 +658,22 @@
         <span class="subtitle" style="text-align: center; display: block" data-lang-key="spon_title">Our Sponsors</span>
         <div class="sponsor-carousel-container">
           <div class="sponsor-track">
-            <img src="https://placehold.co/150x60/eeeeee/999999?text=AdevIT" alt="Sponsor" class="sponsor-logo" />
-            <img src="https://placehold.co/150x60/eeeeee/999999?text=HouseOfSpice" alt="Sponsor" class="sponsor-logo" />
-            <img src="https://placehold.co/150x60/eeeeee/999999?text=Nitya" alt="Sponsor" class="sponsor-logo" />
-            <img src="https://placehold.co/150x60/eeeeee/999999?text=Partner1" alt="Sponsor" class="sponsor-logo" />
-            <img src="https://placehold.co/150x60/eeeeee/999999?text=Partner2" alt="Sponsor" class="sponsor-logo" />
-            <img src="https://placehold.co/150x60/eeeeee/999999?text=AdevIT" alt="Sponsor" class="sponsor-logo" />
-            <img src="https://placehold.co/150x60/eeeeee/999999?text=HouseOfSpice" alt="Sponsor" class="sponsor-logo" />
-            <img src="https://placehold.co/150x60/eeeeee/999999?text=Nitya" alt="Sponsor" class="sponsor-logo" />
-            <img src="https://placehold.co/150x60/eeeeee/999999?text=Partner1" alt="Sponsor" class="sponsor-logo" />
-            <img src="https://placehold.co/150x60/eeeeee/999999?text=Partner2" alt="Sponsor" class="sponsor-logo" />
+            <img src="../assests/sponsor/10-300x89.webp" alt="Sponsor" class="sponsor-logo" />
+            <img src="../assests/sponsor/11-300x89.webp" alt="Sponsor" class="sponsor-logo" />
+            <img src="../assests/sponsor/12-300x89.webp" alt="Sponsor" class="sponsor-logo" />
+            <img src="../assests/sponsor/13.webp" alt="Sponsor" class="sponsor-logo" />
+            <img src="../assests/sponsor/16.webp" alt="Sponsor" class="sponsor-logo" />
+
+            <img src="../assests/sponsor/18.webp" alt="Sponsor" class="sponsor-logo" />
+            <img src="../assests/sponsor/17-1.webp" alt="Sponsor" class="sponsor-logo" />
+            <img src="../assests/sponsor/2-300x89.webp" alt="Sponsor" class="sponsor-logo" />
+            <img src="../assests/sponsor/23.webp" alt="Sponsor" class="sponsor-logo" />
+            <img src="../assests/sponsor/8-300x89.webp" alt="Sponsor" class="sponsor-logo" />
+            <img src="../assests/sponsor/7-300x89.webp" alt="Sponsor" class="sponsor-logo" />
+            <img src="../assests/sponsor/6-300x89.webp" alt="Sponsor" class="sponsor-logo" />
+            <img src="../assests/sponsor/5-300x89.webp" alt="Sponsor" class="sponsor-logo" />
+            <img src="../assests/sponsor/4-300x89.webp" alt="Sponsor" class="sponsor-logo" />
+            <img src="../assests/sponsor/23.webp" alt="Sponsor" class="sponsor-logo" />
           </div>
         </div>
       </div>

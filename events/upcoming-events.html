@@ -44,7 +44,7 @@
       }
       body.modal-open {
         overflow: hidden;
-      } /* Prevent body scroll when modal is open */
+      }
 
       a {
         text-decoration: none;
@@ -115,7 +115,7 @@
         color: #fff;
       }
 
-      /* --- NAVBAR & ANNOUNCEMENT (Global) --- */
+      /* --- NAVBAR & ANNOUNCEMENT --- */
       #announcement-bar {
         background-color: #f4f4f4;
         color: #000;
@@ -141,49 +141,44 @@
         color: #555;
         padding: 5px;
       }
-      /* --- NAVBAR & DROPDOWNS --- */
+
+      /* Navbar Fixes */
       #navbar {
         position: sticky;
         top: 0;
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(5px);
-        padding: 15px 5%; /* Slightly reduced padding for better logo fit */
+        background: rgba(255, 255, 255, 1); /* Solid background to cover hero */
+        padding: 15px 5%;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        z-index: 1000;
+        z-index: 9999; /* Higher than everything else */
+        overflow: visible; /* Allows dropdown to hang out */
         border-bottom: 1px solid transparent;
         transition: all 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
       }
-
       #navbar.scrolled {
         border-bottom: 1px solid var(--border-light);
-        padding: 10px 5%; /* Slightly reduced padding on scroll */
       }
 
-      /* --- NEW LOGO STYLES --- */
+      /* Logo Fix */
       .nav-logo {
-        /* Removed font-weight, font-size, letter-spacing as they are for text */
         display: flex;
         align-items: center;
       }
-
       .nav-logo img {
-        /* Adjust this max-height to fit your logo size preferences */
         max-height: 50px;
         width: auto;
         transition: all 0.3s ease;
       }
 
-      /* Optional: Make logo slightly smaller on scroll */
-      #navbar.scrolled .nav-logo img {
-        max-height: 40px;
-      }
       .nav-menu {
         display: flex;
         gap: 5px;
         align-items: center;
         height: 100%;
+        margin: 0;
+        padding: 0;
       }
       .nav-item {
         position: relative;
@@ -211,20 +206,22 @@
         color: #999;
         margin-top: 2px;
       }
+
+      /* Dropdown Fix */
       .dropdown {
         position: absolute;
-        top: 100%;
+        top: 100%; /* Pushes it exactly below the item */
         left: 0;
         background: #fff;
         min-width: 220px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-        border-top: 2px solid #000;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        border-top: 2px solid #000; /* Orange accent top border */
         opacity: 0;
         visibility: hidden;
         transform: translateY(10px);
         transition: all 0.3s ease;
         padding: 10px 0;
-        z-index: 1100;
+        z-index: 10000;
       }
       .nav-item:hover .dropdown {
         opacity: 1;
@@ -247,6 +244,7 @@
         color: #000;
         padding-left: 25px;
       }
+
       .nav-actions {
         display: flex;
         align-items: center;
@@ -280,6 +278,7 @@
         text-align: center;
         color: #fff;
         overflow: hidden;
+        z-index: 1;
       }
       .page-header-bg {
         position: absolute;
@@ -287,7 +286,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background-image: url("https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80&w=2000"); /* Event crowd image */
+        background-image: url("https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80&w=2000");
         background-size: cover;
         background-position: center;
         opacity: 0.5;
@@ -295,7 +294,7 @@
       }
       .header-content {
         position: relative;
-        z-index: 10;
+        z-index: 2;
         padding: 0 20px;
       }
       .header-title {
@@ -373,7 +372,7 @@
         margin-top: auto;
       }
 
-      /* --- EVENT DETAIL MODAL (The "New Page" feel) --- */
+      /* --- EVENT DETAIL MODAL --- */
       .modal {
         position: fixed;
         top: 0;
@@ -381,7 +380,7 @@
         width: 100%;
         height: 100%;
         background-color: #fff;
-        z-index: 2000;
+        z-index: 11000;
         overflow-y: auto;
         opacity: 0;
         visibility: hidden;
@@ -414,7 +413,6 @@
         transform: rotate(90deg);
       }
 
-      /* Modal Detail Styling (Matching your reference image) */
       .detail-header {
         margin-bottom: 40px;
         border-bottom: 1px solid var(--border-light);
@@ -511,7 +509,7 @@
         display: block;
       }
 
-      /* Placeholders for Map/Gallery */
+      /* Placeholders */
       .placeholder-section {
         margin-top: 50px;
       }
@@ -538,6 +536,127 @@
         height: 150px;
         background: #eee;
         border: 1px dashed #ccc;
+      }
+      /* --- SPONSORS CAROUSEL CSS --- */
+      #sponsors {
+        padding: 60px 0;
+        text-align: center;
+        border-bottom: 1px solid var(--border-light);
+        overflow: hidden;
+        background: #fff;
+      }
+
+      .sponsor-carousel-container {
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+        margin-top: 40px;
+        white-space: nowrap;
+      }
+
+      .sponsor-carousel-container::before,
+      .sponsor-carousel-container::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        width: 100px;
+        height: 100%;
+        z-index: 2;
+        pointer-events: none;
+      }
+
+      .sponsor-carousel-container::before {
+        left: 0;
+        background: linear-gradient(to right, #fff, transparent);
+      }
+      .sponsor-carousel-container::after {
+        right: 0;
+        background: linear-gradient(to left, #fff, transparent);
+      }
+
+      .sponsor-track {
+        display: inline-block;
+        animation: scroll 30s linear infinite;
+      }
+      .sponsor-track:hover {
+        animation-play-state: paused;
+      }
+
+      .sponsor-logo {
+        height: 50px;
+        width: auto;
+        margin: 0 40px;
+        display: inline-block;
+        vertical-align: middle;
+        /* filter: grayscale(100%); */
+        /* opacity: 0.6; */
+        transition: all 0.3s ease;
+      }
+
+      .sponsor-logo:hover {
+        filter: grayscale(0%);
+        opacity: 1;
+        transform: scale(1.05);
+      }
+
+      @keyframes scroll {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+      footer {
+        background-color: #000;
+        color: #fff;
+        padding: 80px 20px 20px;
+        font-size: 0.9rem;
+      }
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: 40px;
+        max-width: 1100px;
+        margin: 0 auto 60px;
+      }
+      .footer-col h4 {
+        color: #fff;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+      }
+      .footer-col p,
+      .footer-col a {
+        color: #888;
+      }
+      .footer-col a:hover {
+        color: #fff;
+      }
+      .footer-col ul li {
+        margin-bottom: 10px;
+      }
+      .footer-bottom {
+        border-top: 1px solid #222;
+        padding-top: 20px;
+        text-align: center;
+        color: #444;
+        font-size: 0.8rem;
+      }
+      .socials a {
+        margin-right: 15px;
+        font-size: 1.2rem;
+      }
+
+      /* Animations & Responsive */
+      .fade-in-up {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
+      }
+      .visible {
+        opacity: 1;
+        transform: translateY(0);
       }
 
       /* Responsive */
@@ -571,54 +690,38 @@
     </div>
 
     <nav id="navbar">
-      <a href="#" class="nav-logo">
-        <img src="assests/logo.webp" alt="NIA Logo" />
+      <a href="../index.html" class="nav-logo">
+        <img src="../assests/logo.webp" alt="NIA Logo" />
       </a>
 
       <ul class="nav-menu">
+        <li class="nav-item"><a href="../index.html" class="nav-link" data-lang-key="nav_home">Home</a></li>
         <li class="nav-item">
-          <a href="#home" class="nav-link" data-lang-key="nav_home">Home</a>
-        </li>
-        <li class="nav-item">
-          <span class="nav-link" data-lang-key="nav_about">About Us <i class="fas fa-chevron-down"></i></span>
+          <span class="nav-link" style="color: #000">About Us <i class="fas fa-chevron-down"></i></span>
           <ul class="dropdown">
-            <li><a href="about/about.html" data-lang-key="nav_about_nia">About NIA</a></li>
-            <li><a href="about/executive-board.html" data-lang-key="nav_board">Executive Board</a></li>
-            <li><a href="about/what-we-do.html" data-lang-key="nav_what_we_do">What we do</a></li>
-            <li><a href="about/history.html" data-lang-key="nav_history_drop">History</a></li>
-            <li><a href="about/constitution.html" data-lang-key="nav_constitution">Constitution of NIA</a></li>
-            <li><a href="about/privacy-policy.html" data-lang-key="nav_privacy">Privacy Policy</a></li>
+            <li><a href="../about/about.html">About NIA</a></li>
+            <li><a href="../about/executive-board.html">Executive Board</a></li>
+            <li><a href="../about/what-we-do.html">What we do</a></li>
+            <li><a href="../about/history.html">History</a></li>
+            <li><a href="../about/constitution.html">Constitution</a></li>
+            <li><a href="../about/privacy-policy.html">Privacy Policy</a></li>
           </ul>
         </li>
         <li class="nav-item">
-          <span class="nav-link" data-lang-key="nav_events">Events <i class="fas fa-chevron-down"></i></span>
+          <span class="nav-link">Events <i class="fas fa-chevron-down"></i></span>
           <ul class="dropdown">
-            <li><a href="events/upcoming-events.html" data-lang-key="nav_upcoming">Upcoming Events</a></li>
-            <li><a href="events/past-events.html" data-lang-key="nav_past">Past Events</a></li>
+            <li><a href="upcoming-events.html">Upcoming Events</a></li>
+            <li><a href="past-events.html">Past Events</a></li>
           </ul>
         </li>
-        <li class="nav-item">
-          <a href="membership.html" class="nav-link" data-lang-key="nav_membership">Membership</a>
-        </li>
-        <li class="nav-item">
-          <a href="articles.html" class="nav-link" data-lang-key="nav_articles">Articles</a>
-        </li>
-        <li class="nav-item">
-          <a href="gallery.html" class="nav-link" data-lang-key="nav_gallery">Gallery</a>
-        </li>
-        <li class="nav-item">
-          <a href="contact-us.html" class="nav-link" data-lang-key="nav_contact">Contact Us</a>
-        </li>
+        <li class="nav-item"><a href="../membership.html" class="nav-link">Membership</a></li>
+        <li class="nav-item"><a href="../articles.html" class="nav-link">Articles</a></li>
+        <li class="nav-item"><a href="../gallery.html" class="nav-link">Gallery</a></li>
+        <li class="nav-item"><a href="../contact-us.html" class="nav-link">Contact Us</a></li>
       </ul>
-
       <div class="nav-actions">
-        <a href="membership.html" class="btn btn-register" data-lang-key="btn_register">Register as a Member</a>
-
-        <div class="lang-switch">
-          <span class="lang-opt active" data-lang="en">EN</span>
-          <span style="color: #ddd">|</span>
-          <span class="lang-opt" data-lang="nl">NL</span>
-        </div>
+        <a href="../membership.html" class="btn btn-register">Register</a>
+        <div class="lang-switch"><span class="lang-opt active">EN</span>|<span class="lang-opt">NL</span></div>
       </div>
     </nav>
 
@@ -643,6 +746,32 @@
         <div id="modal-body-content"></div>
       </div>
     </div>
+    <section id="sponsors">
+      <div class="container fade-in-up">
+        <span class="subtitle" data-lang-key="spon_title">Our Sponsors</span>
+
+        <div class="sponsor-carousel-container">
+          <div class="sponsor-track">
+            <img src="../assests/sponsor/10-300x89.webp" alt="Sponsor" class="sponsor-logo" />
+            <img src="../assests/sponsor/11-300x89.webp" alt="Sponsor" class="sponsor-logo" />
+            <img src="../assests/sponsor/12-300x89.webp" alt="Sponsor" class="sponsor-logo" />
+            <img src="../assests/sponsor/13.webp" alt="Sponsor" class="sponsor-logo" />
+            <img src="../assests/sponsor/16.webp" alt="Sponsor" class="sponsor-logo" />
+
+            <img src="../assests/sponsor/18.webp" alt="Sponsor" class="sponsor-logo" />
+            <img src="../assests/sponsor/17-1.webp" alt="Sponsor" class="sponsor-logo" />
+            <img src="../assests/sponsor/2-300x89.webp" alt="Sponsor" class="sponsor-logo" />
+            <img src="../assests/sponsor/23.webp" alt="Sponsor" class="sponsor-logo" />
+            <img src="../assests/sponsor/8-300x89.webp" alt="Sponsor" class="sponsor-logo" />
+            <img src="../assests/sponsor/7-300x89.webp" alt="Sponsor" class="sponsor-logo" />
+            <img src="../assests/sponsor/6-300x89.webp" alt="Sponsor" class="sponsor-logo" />
+            <img src="../assests/sponsor/5-300x89.webp" alt="Sponsor" class="sponsor-logo" />
+            <img src="../assests/sponsor/4-300x89.webp" alt="Sponsor" class="sponsor-logo" />
+            <img src="../assests/sponsor/23.webp" alt="Sponsor" class="sponsor-logo" />
+          </div>
+        </div>
+      </div>
+    </section>
 
     <footer>
       <div class="footer-grid">
@@ -679,7 +808,7 @@
     </footer>
 
     <script>
-      // --- 1. SAMPLE EVENT DATA (Simulating a Database) ---
+      // --- 1. SAMPLE EVENT DATA ---
       const eventsData = [
         {
           id: 1,
@@ -689,7 +818,7 @@
           image: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&q=80&w=1000",
           price: 25.0,
           description:
-            "Join us for a mesmerizing evening celebrating the rich musical and dance traditions of both India and the Netherlands. Featuring renowned classical Indian dancers and Dutch contemporary musicians in a unique fusion performance. The evening includes a networking reception with cultural snacks.",
+            "Join us for a mesmerizing evening celebrating the rich musical and dance traditions of both India and the Netherlands. Featuring renowned classical Indian dancers and Dutch contemporary musicians in a unique fusion performance.",
         },
         {
           id: 2,
@@ -699,7 +828,7 @@
           image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=1000",
           price: 40.0,
           description:
-            "A high-level academic and business symposium focusing on technological cooperation between India and the Netherlands. Keynote speakers from leading tech firms and universities will discuss AI, sustainable energy, and future opportunities. Ideal for networking and knowledge exchange.",
+            "A high-level academic and business symposium focusing on technological cooperation between India and the Netherlands. Keynote speakers from leading tech firms and universities will discuss AI, sustainable energy, and future opportunities.",
         },
         {
           id: 3,
@@ -709,7 +838,7 @@
           image: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&q=80&w=1000",
           price: 75.0,
           description:
-            "Celebrate the Festival of Lights in style at our annual Diwali Gala. Enjoy a luxurious three-course Indian fine dining experience, live entertainment, music, and a vibrant atmosphere. Dress code: Traditional Indian or Black Tie. This is our flagship social event of the year.",
+            "Celebrate the Festival of Lights in style at our annual Diwali Gala. Enjoy a luxurious three-course Indian fine dining experience, live entertainment, music, and a vibrant atmosphere. Dress code: Traditional Indian or Black Tie.",
         },
         {
           id: 4,
@@ -719,7 +848,7 @@
           image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=1000",
           price: 0.0,
           description:
-            "Mark your calendars for next year! Connect with your inner self at our grand open-air Yoga session celebrating International Yoga Day. Led by certified instructors, this session is open to all ages and skill levels. Bring your own mat. Healthy breakfast refreshments provided afterwards.",
+            "Mark your calendars for next year! Connect with your inner self at our grand open-air Yoga session celebrating International Yoga Day. Led by certified instructors, this session is open to all ages and skill levels. Bring your own mat.",
         },
       ];
 
@@ -769,7 +898,7 @@
         currentTicketCount = 1;
         currentEventPrice = event.price;
 
-        // Populate Modal HTML structure matching the reference image style
+        // Populate Modal HTML structure
         modalBody.innerHTML = `
                 <div class="detail-header">
                     <h2 class="detail-title">${event.title}</h2>
@@ -792,15 +921,6 @@
                             <h4 class="placeholder-title">Time & Location</h4>
                             <p style="margin-bottom:10px;">${event.dateFormatted}<br>${event.location}</p>
                             <div class="map-placeholder"><i class="fas fa-map-marked-alt" style="margin-right:10px;"></i> Map View Placeholder</div>
-                        </div>
-
-                         <div class="placeholder-section" style="margin-bottom: 40px;">
-                            <h4 class="placeholder-title">Have a Glance (Past Events)</h4>
-                            <div class="gallery-placeholder">
-                                <div class="gallery-thumb"></div>
-                                <div class="gallery-thumb"></div>
-                                <div class="gallery-thumb"></div>
-                            </div>
                         </div>
                     </div>
 
@@ -838,11 +958,11 @@
         modal.classList.add("active");
       }
 
-      // Global function for ticket updates inside the modal HTML string
+      // Global function for ticket updates
       window.updateTicket = function (change) {
         let newCount = currentTicketCount + change;
         if (newCount < 1) newCount = 1;
-        if (newCount > 10) newCount = 10; // Max limit example
+        if (newCount > 10) newCount = 10;
 
         currentTicketCount = newCount;
         document.getElementById("ticket-qty").innerText = currentTicketCount;
@@ -854,6 +974,22 @@
       closeBtn.addEventListener("click", () => {
         modal.classList.remove("active");
         document.body.classList.remove("modal-open");
+      });
+
+      // Navbar Scroll Effect
+      window.addEventListener("scroll", () => {
+        const navbar = document.getElementById("navbar");
+        if (window.scrollY > 50) navbar.classList.add("scrolled");
+        else navbar.classList.remove("scrolled");
+      });
+
+      // Announcement Bar
+      if (localStorage.getItem("niaAnnouncementClosed") === "true") {
+        document.getElementById("announcement-bar").style.display = "none";
+      }
+      document.querySelector(".announcement-close").addEventListener("click", () => {
+        document.getElementById("announcement-bar").style.display = "none";
+        localStorage.setItem("niaAnnouncementClosed", "true");
       });
 
       // Initialize

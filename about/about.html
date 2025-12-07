@@ -450,6 +450,76 @@
         filter: grayscale(0%);
         opacity: 1;
       }
+      /* --- SPONSORS CAROUSEL CSS --- */
+      #sponsors {
+        padding: 60px 0;
+        text-align: center;
+        border-bottom: 1px solid var(--border-light);
+        overflow: hidden;
+        background: #fff;
+      }
+
+      .sponsor-carousel-container {
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+        margin-top: 40px;
+        white-space: nowrap;
+      }
+
+      .sponsor-carousel-container::before,
+      .sponsor-carousel-container::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        width: 100px;
+        height: 100%;
+        z-index: 2;
+        pointer-events: none;
+      }
+
+      .sponsor-carousel-container::before {
+        left: 0;
+        background: linear-gradient(to right, #fff, transparent);
+      }
+      .sponsor-carousel-container::after {
+        right: 0;
+        background: linear-gradient(to left, #fff, transparent);
+      }
+
+      .sponsor-track {
+        display: inline-block;
+        animation: scroll 30s linear infinite;
+      }
+      .sponsor-track:hover {
+        animation-play-state: paused;
+      }
+
+      .sponsor-logo {
+        height: 50px;
+        width: auto;
+        margin: 0 40px;
+        display: inline-block;
+        vertical-align: middle;
+        /* filter: grayscale(100%); */
+        /* opacity: 0.6; */
+        transition: all 0.3s ease;
+      }
+
+      .sponsor-logo:hover {
+        filter: grayscale(0%);
+        opacity: 1;
+        transform: scale(1.05);
+      }
+
+      @keyframes scroll {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
 
       /* --- FOOTER --- */
       footer {
@@ -522,16 +592,15 @@
     </div>
 
     <nav id="navbar">
-      <a href="#" class="nav-logo">
-        <img src="assests/logo.webp" alt="NIA Logo" />
+      <a href="../index.html" class="nav-logo">
+        <img src="../assests/logo.webp" alt="NIA Logo" />
       </a>
 
       <ul class="nav-menu">
+        <li class="nav-item"><a href="../index.html" class="nav-link" data-lang-key="nav_home">Home</a></li>
+
         <li class="nav-item">
-          <a href="#home" class="nav-link" data-lang-key="nav_home">Home</a>
-        </li>
-        <li class="nav-item">
-          <span class="nav-link" data-lang-key="nav_about">About Us <i class="fas fa-chevron-down"></i></span>
+          <span class="nav-link" style="color: #000" data-lang-key="nav_about">About Us <i class="fas fa-chevron-down"></i></span>
           <ul class="dropdown">
             <li><a href="about.html" data-lang-key="nav_about_nia">About NIA</a></li>
             <li><a href="executive-board.html" data-lang-key="nav_board">Executive Board</a></li>
@@ -541,38 +610,28 @@
             <li><a href="privacy-policy.html" data-lang-key="nav_privacy">Privacy Policy</a></li>
           </ul>
         </li>
+
         <li class="nav-item">
           <span class="nav-link" data-lang-key="nav_events">Events <i class="fas fa-chevron-down"></i></span>
           <ul class="dropdown">
-            <li><a href="events/upcoming-events.html" data-lang-key="nav_upcoming">Upcoming Events</a></li>
-            <li><a href="events/past-events.html" data-lang-key="nav_past">Past Events</a></li>
+            <li><a href="../events/upcoming-events.html" data-lang-key="nav_upcoming">Upcoming Events</a></li>
+            <li><a href="../events/past-events.html" data-lang-key="nav_past">Past Events</a></li>
           </ul>
         </li>
-        <li class="nav-item">
-          <a href="membership.html" class="nav-link" data-lang-key="nav_membership">Membership</a>
-        </li>
-        <li class="nav-item">
-          <a href="articles.html" class="nav-link" data-lang-key="nav_articles">Articles</a>
-        </li>
-        <li class="nav-item">
-          <a href="gallery.html" class="nav-link" data-lang-key="nav_gallery">Gallery</a>
-        </li>
-        <li class="nav-item">
-          <a href="contact-us.html" class="nav-link" data-lang-key="nav_contact">Contact Us</a>
-        </li>
+
+        <li class="nav-item"><a href="../membership.html" class="nav-link" data-lang-key="nav_membership">Membership</a></li>
+        <li class="nav-item"><a href="../articles.html" class="nav-link" data-lang-key="nav_articles">Articles</a></li>
+        <li class="nav-item"><a href="../gallery.html" class="nav-link" data-lang-key="nav_gallery">Gallery</a></li>
+        <li class="nav-item"><a href="../contact-us.html" class="nav-link" data-lang-key="nav_contact">Contact Us</a></li>
       </ul>
 
       <div class="nav-actions">
-        <a href="membership.html" class="btn btn-register" data-lang-key="btn_register">Register as a Member</a>
-
+        <a href="../membership.html" class="btn btn-register" data-lang-key="btn_register">Register as a Member</a>
         <div class="lang-switch">
-          <span class="lang-opt active" data-lang="en">EN</span>
-          <span style="color: #ddd">|</span>
-          <span class="lang-opt" data-lang="nl">NL</span>
+          <span class="lang-opt active" data-lang="en">EN</span><span style="color: #ddd">|</span><span class="lang-opt" data-lang="nl">NL</span>
         </div>
       </div>
     </nav>
-
     <header class="page-header">
       <div class="page-header-bg"></div>
       <div class="header-content">
@@ -675,13 +734,28 @@
     </section>
 
     <section id="sponsors">
-      <div class="container">
-        <span class="subtitle" data-lang-key="spon_title">Sponsors</span>
-        <div class="sponsor-grid">
-          <img src="https://placehold.co/150x50/eee/999?text=AdevIT" alt="Sponsor" />
-          <img src="https://placehold.co/150x50/eee/999?text=Spice" alt="Sponsor" />
-          <img src="https://placehold.co/150x50/eee/999?text=Nitya" alt="Sponsor" />
-          <img src="https://placehold.co/150x50/eee/999?text=Logo" alt="Sponsor" />
+      <div class="container fade-in-up">
+        <span class="subtitle" data-lang-key="spon_title">Our Sponsors</span>
+
+        <div class="sponsor-carousel-container">
+          <div class="sponsor-track">
+            <img src="../assests/sponsor/10-300x89.webp" alt="Sponsor" class="sponsor-logo" />
+            <img src="../assests/sponsor/11-300x89.webp" alt="Sponsor" class="sponsor-logo" />
+            <img src="../assests/sponsor/12-300x89.webp" alt="Sponsor" class="sponsor-logo" />
+            <img src="../assests/sponsor/13.webp" alt="Sponsor" class="sponsor-logo" />
+            <img src="../assests/sponsor/16.webp" alt="Sponsor" class="sponsor-logo" />
+
+            <img src="../assests/sponsor/18.webp" alt="Sponsor" class="sponsor-logo" />
+            <img src="../assests/sponsor/17-1.webp" alt="Sponsor" class="sponsor-logo" />
+            <img src="../assests/sponsor/2-300x89.webp" alt="Sponsor" class="sponsor-logo" />
+            <img src="../assests/sponsor/23.webp" alt="Sponsor" class="sponsor-logo" />
+            <img src="../assests/sponsor/8-300x89.webp" alt="Sponsor" class="sponsor-logo" />
+            <img src="../assests/sponsor/7-300x89.webp" alt="Sponsor" class="sponsor-logo" />
+            <img src="../assests/sponsor/6-300x89.webp" alt="Sponsor" class="sponsor-logo" />
+            <img src="../assests/sponsor/5-300x89.webp" alt="Sponsor" class="sponsor-logo" />
+            <img src="../assests/sponsor/4-300x89.webp" alt="Sponsor" class="sponsor-logo" />
+            <img src="../assests/sponsor/23.webp" alt="Sponsor" class="sponsor-logo" />
+          </div>
         </div>
       </div>
     </section>
